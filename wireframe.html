@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wireframe de baja fidelidad — Jean Pierre Segil">
+  <title>Wireframe — Jean Pierre Segil</title>
+  <style>
+    /* =========================================================
+       WIREFRAME LOW-FIDELITY — Solo grises, tipografía system-ui
+       ========================================================= */
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      background: #fff;
+    }
+
+    /* Contenedor central */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Secciones */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px dashed #E0E0E0;
+    }
+
+    /* Tipografía — jerarquía en grises */
+    h1 {
+      font-size: 56px;
+      line-height: 1.1;
+      font-weight: 700;
+      margin: 0 0 24px;
+      color: #333;
+    }
+    h2 {
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: #333;
+    }
+    h3 {
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+      margin: 0 0 16px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+    .micro {
+      font-size: 12px;
+      color: #999;
+    }
+
+    /* Botones — CTAs en gris */
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 1px solid #333;
+      background: #fff;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      margin-right: 12px;
+    }
+    .btn-primary {
+      background: #333;
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Placeholders de imagen/video */
+    .placeholder {
+      border: 2px dashed #999;
+      background: #F5F5F5;
+      color: #666;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      padding: 16px;
+      min-height: 80px;
+    }
+    .placeholder-img { aspect-ratio: 4/3; }
+    .placeholder-video { aspect-ratio: 16/9; }
+    .placeholder-logo { height: 60px; }
+    .placeholder-icon {
+      width: 40px;
+      height: 40px;
+      min-height: 40px;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ========== NAV STICKY ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 24px;
+    }
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu a {
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+    }
+    .nav-cta {
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 100px 0;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-ctas {
+      margin: 24px 0 16px;
+    }
+    .hero-img {
+      min-height: 420px;
+    }
+
+    /* ========== MARCAS ========== */
+    .marcas-title {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 32px;
+    }
+    .marcas-row {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 16px;
+    }
+
+    /* ========== PROBLEMA ========== */
+    .problema-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+    .problema-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 40px;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .problema-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .problema-item p {
+      margin: 0;
+      font-size: 17px;
+      color: #333;
+    }
+    .problema-cierre {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ========== PROPUESTA DE VALOR ========== */
+    .pv-head {
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+    .pullquote {
+      border-left: 4px solid #333;
+      padding: 24px 32px;
+      margin: 40px 0 0;
+      font-size: 24px;
+      line-height: 1.4;
+      font-style: italic;
+      color: #333;
+      background: #F5F5F5;
+      position: relative;
+    }
+    .pullquote::before {
+      content: "\201C";
+      font-size: 64px;
+      line-height: 1;
+      color: #999;
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      font-style: normal;
+    }
+    .pullquote p {
+      margin: 0 0 0 40px;
+      font-size: 24px;
+      color: #333;
+      font-style: italic;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      h1 { font-size: 40px; }
+      h2 { font-size: 30px; }
+      h3 { font-size: 20px; }
+
+      .hero { padding: 60px 0; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-img { min-height: 280px; }
+
+      .nav-inner { flex-wrap: wrap; gap: 12px; }
+      .nav-menu {
+        order: 3;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+      }
+      .nav-cta { font-size: 12px; padding: 8px 14px; }
+
+      .marcas-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .pullquote {
+        padding: 20px 20px 20px 28px;
+        font-size: 18px;
+      }
+      .pullquote p { font-size: 18px; margin-left: 24px; }
+      .pullquote::before { font-size: 48px; }
+
+      .btn { margin-bottom: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 60px 0; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; }
+      .marcas-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sección: Nav Sticky -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">[ LOGO / Jean Pierre Segil ]</div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#problema">Problema</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#casos">Casos</a></li>
+          <li><a href="#contenido">Contenido</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a href="#contacto" class="btn btn-primary nav-cta">Agendar reunión</a>
+    </div>
+  </header>
+
+  <!-- Sección: Hero -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="eyebrow">[ EYEBROW — pre-título pequeño ]</span>
+          <h1>Título H1 aquí — propuesta principal en 1 o 2 líneas</h1>
+          <p class="subtitle">Subtítulo descriptivo de 2 líneas que expande la propuesta y aclara para quién es y qué resuelve.</p>
+          <div class="hero-ctas">
+            <a href="#contacto" class="btn btn-primary">CTA primario</a>
+            <a href="#servicios" class="btn btn-secondary">CTA secundario</a>
+          </div>
+          <p class="micro">[ Micro-copy debajo de los CTAs — ej. "Sin costo. 30 min." ]</p>
+        </div>
+        <div class="placeholder placeholder-img hero-img">
+          [ IMAGEN / ILUSTRACIÓN: retrato o visual principal ]
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Marcas -->
+  <section id="marcas">
+    <div class="container">
+      <p class="marcas-title">Marcas con las que he trabajado</p>
+      <div class="marcas-row">
+        <div class="placeholder placeholder-logo">[ LOGO 1 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 2 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 3 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 4 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 5 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 6 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 7 ]</div>
+        <div class="placeholder placeholder-logo">[ LOGO 8 ]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Problema -->
+  <section id="problema">
+    <div class="container">
+      <div class="problema-head">
+        <h2>Título H2 del problema — centrado</h2>
+        <p>Párrafo introductorio de 2-3 líneas que contextualiza los dolores que enfrentan las empresas medianas en su crecimiento digital.</p>
+      </div>
+      <ul class="problema-lista">
+        <li class="problema-item">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <p>Pregunta/dolor #1 — una frase de una o dos líneas sobre un síntoma concreto.</p>
+        </li>
+        <li class="problema-item">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <p>Pregunta/dolor #2 — una frase de una o dos líneas sobre un síntoma concreto.</p>
+        </li>
+        <li class="problema-item">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <p>Pregunta/dolor #3 — una frase de una o dos líneas sobre un síntoma concreto.</p>
+        </li>
+        <li class="problema-item">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <p>Pregunta/dolor #4 — una frase de una o dos líneas sobre un síntoma concreto.</p>
+        </li>
+        <li class="problema-item">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <p>Pregunta/dolor #5 — una frase de una o dos líneas sobre un síntoma concreto.</p>
+        </li>
+      </ul>
+      <p class="problema-cierre">Párrafo de cierre de 2-3 líneas que conecta los dolores con la promesa de solución.</p>
+    </div>
+  </section>
+
+  <!-- Sección: Propuesta de Valor -->
+  <section id="propuesta-valor">
+    <div class="container">
+      <div class="pv-head">
+        <h2>Título H2 — propuesta de valor</h2>
+        <p>Párrafo de 2-3 líneas que articula de manera clara qué hago, para quién y qué resultado produce. Lenguaje directo, sin jerga.</p>
+      </div>
+      <blockquote class="pullquote">
+        <p>Frase destacada tipo pull quote — declaración potente en 1 o 2 líneas que resume la filosofía de trabajo.</p>
+      </blockquote>
+    </div>
+  </section>
+
+</body>
+</html>
