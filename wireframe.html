@@ -480,6 +480,269 @@
       font-style: normal;
     }
 
+    /* ========== CONTENIDO ========== */
+    .contenido-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .contenido-card {
+      border: 1px solid #E0E0E0;
+      border-radius: 16px;
+      background: #fff;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s;
+    }
+    .contenido-card:hover {
+      border-color: #999;
+    }
+    .contenido-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      margin-bottom: 20px;
+    }
+    .contenido-video .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      color: #666;
+      background: #fff;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #E0E0E0;
+      line-height: 1;
+    }
+    .contenido-video .video-label {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 0.05em;
+    }
+    .contenido-card h3 {
+      margin: 0 0 8px;
+    }
+    .contenido-card .contenido-desc {
+      margin: 0 0 20px;
+      flex-grow: 1;
+    }
+    .contenido-link {
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* ========== NEWSLETTER ========== */
+    .newsletter-box {
+      background: #F5F5F5;
+      border-radius: 24px;
+      padding: 64px 48px;
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .newsletter-box h2 {
+      margin-bottom: 12px;
+    }
+    .newsletter-box p.newsletter-desc {
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 640px;
+      margin: 0 auto 16px;
+      align-items: center;
+    }
+    .newsletter-form input {
+      flex: 1;
+      border: 1px solid #E0E0E0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: #333;
+      background: #fff;
+    }
+    .newsletter-form button {
+      border: 0;
+      background: #333;
+      color: #fff;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .newsletter-micro {
+      font-size: 12px;
+      color: #999;
+      margin: 0;
+    }
+
+    /* ========== FAQ ========== */
+    .faq-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-wrap details {
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .faq-wrap summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .faq-wrap summary::-webkit-details-marker { display: none; }
+    .faq-wrap summary::after {
+      content: "+";
+      font-size: 24px;
+      font-weight: 400;
+      color: #666;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .faq-wrap details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .faq-wrap .faq-answer {
+      padding: 0 0 20px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ========== CONTACTO ========== */
+    .contacto-section {
+      background: #333;
+      padding: 96px 24px;
+      border-bottom: 0;
+    }
+    .contacto-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contacto-inner h2 {
+      color: #fff;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .contacto-inner p.contacto-desc {
+      color: #E0E0E0;
+      margin-bottom: 32px;
+    }
+    .contacto-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .contacto-btn {
+      display: inline-block;
+      border-radius: 8px;
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid #fff;
+    }
+    .contacto-btn-primary {
+      background: #fff;
+      color: #333;
+    }
+    .contacto-btn-secondary {
+      background: transparent;
+      color: #fff;
+    }
+    .contacto-micro {
+      color: #999;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: #fff;
+      border-top: 1px solid #E0E0E0;
+      padding: 48px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 12px;
+      max-width: 320px;
+    }
+    .footer-brand-loc {
+      font-size: 13px;
+      color: #999;
+      margin: 0;
+    }
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #E0E0E0;
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+    }
+
     /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
       h1 { font-size: 40px; }
@@ -537,6 +800,21 @@
         gap: 24px;
         padding: 24px;
       }
+
+      .contenido-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .newsletter-box { padding: 48px 32px; }
+      .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .newsletter-form input,
+      .newsletter-form button { width: 100%; }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -547,6 +825,7 @@
 
       .servicios-grid { grid-template-columns: 1fr; }
       .exp-grid { grid-template-columns: 1fr; }
+      .contenido-grid { grid-template-columns: 1fr; }
 
       .timeline { padding-left: 20px; }
       .timeline-step {
@@ -556,6 +835,17 @@
       }
       .timeline-step::before { top: 32px; }
       .timeline-number { font-size: 36px; }
+
+      .newsletter-box {
+        padding: 40px 24px;
+        border-radius: 16px;
+      }
+
+      .contacto-section { padding: 72px 16px; }
+      .contacto-ctas { flex-direction: column; }
+      .contacto-btn { display: block; }
+
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -876,6 +1166,216 @@
       </div>
     </div>
   </section>
+
+  <!-- Sección: Contenido -->
+  <section id="contenido">
+    <div class="container">
+      <div class="section-head-center">
+        <h2>Título H2 — contenido educativo</h2>
+        <p class="subtitle">Subtítulo descriptivo de 2 líneas que introduce los videos y contenido formativo disponible.</p>
+      </div>
+      <div class="contenido-grid">
+        <article class="contenido-card">
+          <div class="placeholder placeholder-video contenido-video">
+            <span class="play-icon">▶</span>
+            <span class="video-label">[ VIDEO embed — TikTok / YouTube ]</span>
+          </div>
+          <h3>Título del contenido 1 — máximo 2 líneas</h3>
+          <p class="contenido-desc">Descripción breve de 2-3 líneas sobre el contenido y el valor que entrega al espectador.</p>
+          <a href="#" class="contenido-link">Leer resumen →</a>
+        </article>
+        <article class="contenido-card">
+          <div class="placeholder placeholder-video contenido-video">
+            <span class="play-icon">▶</span>
+            <span class="video-label">[ VIDEO embed — TikTok / YouTube ]</span>
+          </div>
+          <h3>Título del contenido 2 — máximo 2 líneas</h3>
+          <p class="contenido-desc">Descripción breve de 2-3 líneas sobre el contenido y el valor que entrega al espectador.</p>
+          <a href="#" class="contenido-link">Leer resumen →</a>
+        </article>
+        <article class="contenido-card">
+          <div class="placeholder placeholder-video contenido-video">
+            <span class="play-icon">▶</span>
+            <span class="video-label">[ VIDEO embed — TikTok / YouTube ]</span>
+          </div>
+          <h3>Título del contenido 3 — máximo 2 líneas</h3>
+          <p class="contenido-desc">Descripción breve de 2-3 líneas sobre el contenido y el valor que entrega al espectador.</p>
+          <a href="#" class="contenido-link">Leer resumen →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Newsletter -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter-box">
+        <h2>Título H2 — newsletter</h2>
+        <p class="newsletter-desc">Párrafo de 2 líneas que explica de qué va el newsletter y qué valor recibe el suscriptor.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="text" placeholder="Nombre" aria-label="Nombre">
+          <input type="email" placeholder="Correo electrónico" aria-label="Correo electrónico">
+          <button type="submit">Suscribirme</button>
+        </form>
+        <p class="newsletter-micro">[ Ej. Un correo a la semana. Puedes darte de baja cuando quieras. ]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head-center">
+        <h2>Título H2 — preguntas frecuentes</h2>
+        <p class="subtitle">Subtítulo breve de una línea.</p>
+      </div>
+      <div class="faq-wrap">
+        <details open>
+          <summary>Pregunta frecuente 1 — ejemplo abierto por defecto</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas que resuelve la duda de forma clara y directa, con el tono y nivel de detalle esperado para el lector promedio.</p>
+        </details>
+        <details>
+          <summary>Pregunta frecuente 2</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas.</p>
+        </details>
+        <details>
+          <summary>Pregunta frecuente 3</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas.</p>
+        </details>
+        <details>
+          <summary>Pregunta frecuente 4</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas.</p>
+        </details>
+        <details>
+          <summary>Pregunta frecuente 5</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas.</p>
+        </details>
+        <details>
+          <summary>Pregunta frecuente 6</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas.</p>
+        </details>
+        <details>
+          <summary>Pregunta frecuente 7</summary>
+          <p class="faq-answer">Respuesta placeholder de 3-4 líneas.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Contacto -->
+  <section id="contacto" class="contacto-section">
+    <div class="contacto-inner">
+      <h2>Título H2 grande — llamado final a la acción</h2>
+      <p class="contacto-desc">Párrafo de 2 líneas que invita al lector a dar el siguiente paso sin fricción.</p>
+      <div class="contacto-ctas">
+        <a href="#" class="contacto-btn contacto-btn-primary">Agendar mi reunión gratuita</a>
+        <a href="#" class="contacto-btn contacto-btn-secondary">Escribirme por WhatsApp</a>
+      </div>
+      <p class="contacto-micro">[ También puedes escribirme a: correo@placeholder.com ]</p>
+    </div>
+  </section>
+
+  <!-- Sección: Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="footer-brand-name">[ LOGO / Jean Pierre Segil ]</p>
+          <p class="footer-brand-desc">Descripción breve de 2 líneas sobre la marca personal y su propuesta de valor.</p>
+          <p class="footer-brand-loc">Lima, Perú</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#metodologia">Metodología</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#casos">Casos</a></li>
+            <li><a href="#contenido">Contenido</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Sígueme</h4>
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Jean Pierre Segil. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!--
+  NOTAS DEL WIREFRAME — PARA FASE 2 (DISEÑO FINAL)
+
+  Decisiones tomadas en esta fase:
+  - Estructura one-page con nav sticky y navegación por anclas; se priorizó
+    claridad estructural sobre estética (paleta 100% gris, tipografía system).
+  - Hero con grid 55/45 (texto/imagen) en desktop y stack vertical en mobile;
+    H1 escalable con clamp() para evitar saltos de línea excesivos.
+  - Placeholders visuales unificados (border dashed, border-radius 12px) con
+    etiquetas textuales que indican el tipo de contenido esperado.
+  - Servicios en grid 3 columnas (5 tarjetas — la última queda sola en la
+    última fila a propósito, para validarlo con el cliente).
+  - Metodología en timeline vertical con línea conectora y números grandes;
+    alineación a la izquierda para mantener consistencia con bloques de texto.
+  - Sobre-mí en layout 40/60 con mini-ficha destacada en bloque #F5F5F5.
+  - Experiencia en grid 3x3 rectangular, íconos a la izquierda del rubro.
+  - Casos en tarjetas horizontales apiladas (30/70) con aprendizaje clave
+    destacado al pie de cada tarjeta.
+  - Contenido en grid de 3 cards con placeholder de video 16:9 y CTA de
+    lectura de resumen.
+  - Newsletter como bloque autocontenido (#F5F5F5, border-radius 24px) con
+    formulario inline que colapsa a vertical en mobile.
+  - FAQ con <details>/<summary> nativos — sin JavaScript — y la primera
+    pregunta abierta por defecto.
+  - Contacto full-width con fondo #333 para máximo contraste visual como
+    cierre de la página antes del footer.
+  - Footer de 4 columnas (2fr/1fr/1fr/1fr) con línea divisora y copyright.
+
+  Preguntas pendientes para validar antes del diseño final:
+  - ¿La última tarjeta de servicios quedando sola en su fila funciona o
+    conviene reorganizar el grid (2+3, 2+2+1 centradas, o reducir a 4/6)?
+  - ¿El timeline de metodología se entiende mejor vertical u horizontal?
+    (horizontal tendría más impacto visual pero obliga a descripciones más
+    cortas y a tener que apilar en mobile de todas formas).
+  - ¿Las tarjetas de casos deben mostrar métricas/números destacados
+    (ej. "+42% CAC", "3x ROAS") o mantenerse solo texto descriptivo?
+  - ¿La sección de contenido educativo necesita categorías/filtros
+    (por tema, formato, plataforma) o se queda simple con 3 destacados?
+  - ¿La paleta final será la del brief (blanco, negro, azul profundo,
+    verde opaco) o se explorará otra dirección (ej. monocromo + acento)?
+  - ¿Las fotografías de los casos serán mockups de dashboards, capturas
+    reales anonimizadas o ilustraciones abstractas?
+  - ¿Se necesita una versión EN del sitio o solo ES por ahora?
+  - ¿El CTA principal es "Agendar reunión" con embed de Calendly/Cal.com
+    in-page o redirige a una página externa?
+
+  Siguientes pasos sugeridos:
+  - Validar el wireframe con el cliente en desktop y mobile.
+  - Definir dirección visual completa (colores, tipografía, tratamiento de
+    fotos, patrones, íconos).
+  - Reemplazar copy placeholder con el copy final aprobado.
+  - Implementar integraciones: Google Calendar, WhatsApp, newsletter
+    (email marketing), Google Analytics.
+  - Revisar performance, accesibilidad (contraste, foco, semántica ARIA),
+    SEO on-page y Open Graph tags antes de publicar.
+  -->
 
 </body>
 </html>
