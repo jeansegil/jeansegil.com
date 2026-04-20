@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agenda tu sesión gratuita con Jean Pierre Segil — wireframe">
+  <title>Agendar sesión — Jean Pierre Segil</title>
+  <style>
+    /* =========================================================
+       WIREFRAME /agendar — Coherente con wireframe.html
+       ========================================================= */
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      background: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-bottom: 1px dashed #E0E0E0;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      font-weight: 700;
+      margin: 0 0 24px;
+      color: #333;
+    }
+    h2 {
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: #333;
+    }
+    h3 {
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 600;
+      margin: 0 0 12px;
+      color: #333;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
+      margin: 0 0 16px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 16px;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    /* Placeholders */
+    .placeholder {
+      border: 2px dashed #999;
+      border-radius: 12px;
+      background: #F5F5F5;
+      color: #666;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      padding: 16px;
+      min-height: 80px;
+    }
+    .placeholder-icon {
+      width: 48px;
+      height: 48px;
+      min-height: 48px;
+      border-radius: 8px;
+      border-width: 2px;
+      background: #E0E0E0;
+      color: #333;
+      font-size: 10px;
+      font-weight: 600;
+      flex-shrink: 0;
+      padding: 4px;
+    }
+
+    /* ========== NAV STICKY ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid #E0E0E0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 24px;
+    }
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      text-decoration: none;
+    }
+    .nav-back {
+      font-size: 14px;
+      color: #666;
+      text-decoration: none;
+    }
+
+    /* ========== ENCABEZADO AGENDA ========== */
+    .agenda-head {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+    .agenda-head p {
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+    .agenda-indicadores {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .agenda-indicador {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    /* ========== CALENDARIO ========== */
+    .calendario-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid #E0E0E0;
+      border-radius: 16px;
+      background: #fff;
+      padding: 24px;
+    }
+    .calendario-placeholder {
+      min-height: 600px;
+    }
+
+    /* ========== QUE SIGUE ========== */
+    .section-head-center {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+    .pasos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .paso-card {
+      border: 1px solid #E0E0E0;
+      border-radius: 16px;
+      background: #fff;
+      padding: 32px;
+    }
+    .paso-card h3 {
+      margin: 20px 0 8px;
+    }
+    .paso-card p {
+      margin: 0;
+    }
+
+    /* ========== MIENTRAS TANTO ========== */
+    .mientras-box {
+      background: #F5F5F5;
+      border-radius: 24px;
+      padding: 64px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .mientras-box h2 { margin-bottom: 12px; }
+    .mientras-box > p {
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+    .mientras-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: left;
+    }
+    .mientras-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      color: #333;
+      transition: border-color 0.2s;
+    }
+    .mientras-link:hover { border-color: #999; }
+    .mientras-link-body {
+      flex: 1;
+    }
+    .mientras-link-body h3 {
+      font-size: 15px;
+      margin: 0 0 2px;
+      font-weight: 600;
+    }
+    .mientras-link-body p {
+      font-size: 13px;
+      color: #999;
+      margin: 0;
+    }
+    .mientras-arrow {
+      font-size: 18px;
+      color: #666;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: #fff;
+      border-top: 1px solid #E0E0E0;
+      padding: 48px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-brand-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 12px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      color: #666;
+      margin: 0 0 12px;
+      max-width: 320px;
+    }
+    .footer-brand-loc {
+      font-size: 13px;
+      color: #999;
+      margin: 0;
+    }
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #E0E0E0;
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      h1 { font-size: 40px; }
+      h2 { font-size: 30px; }
+      h3 { font-size: 20px; }
+
+      .agenda-indicadores {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .pasos-grid { grid-template-columns: 1fr; }
+
+      .mientras-box { padding: 48px 32px; }
+      .mientras-grid { grid-template-columns: 1fr; }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 60px 0; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; }
+
+      .calendario-wrap { padding: 16px; }
+      .calendario-placeholder { min-height: 480px; }
+
+      .mientras-box {
+        padding: 40px 24px;
+        border-radius: 16px;
+      }
+
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sección: Nav Sticky -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/wireframe.html" class="nav-logo">[ LOGO / Jean Pierre Segil ]</a>
+      <a href="/wireframe.html" class="nav-back">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <!-- Sección: Encabezado Agenda -->
+  <section id="encabezado-agenda">
+    <div class="container">
+      <div class="agenda-head">
+        <span class="eyebrow">[ EYEBROW: Sesión gratuita ]</span>
+        <h1>Título H1 — Agenda tu sesión gratuita de 45 minutos</h1>
+        <p>Párrafo explicativo de 2-3 líneas sobre qué ocurrirá en la sesión, qué necesita traer la persona y cómo prepararse.</p>
+        <div class="agenda-indicadores">
+          <div class="agenda-indicador">
+            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <span>45 minutos</span>
+          </div>
+          <div class="agenda-indicador">
+            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <span>Vía Google Meet</span>
+          </div>
+          <div class="agenda-indicador">
+            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <span>Sin costo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Calendario -->
+  <section id="calendario">
+    <div class="container">
+      <div class="calendario-wrap">
+        <div class="placeholder calendario-placeholder">
+          [ IFRAME: Google Calendar Appointment Scheduling — altura 600px ]
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Que sigue -->
+  <section id="que-sigue">
+    <div class="container">
+      <div class="section-head-center">
+        <h2>Qué sucede después de agendar</h2>
+      </div>
+      <div class="pasos-grid">
+        <article class="paso-card">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <h3>Paso 1 — Confirmación</h3>
+          <p>Recibirás correo de confirmación con el link de Meet.</p>
+        </article>
+        <article class="paso-card">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <h3>Paso 2 — Revisión</h3>
+          <p>Revisaré tu información antes de nuestra reunión.</p>
+        </article>
+        <article class="paso-card">
+          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <h3>Paso 3 — Sesión</h3>
+          <p>Nos vemos en la fecha agendada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Mientras tanto -->
+  <section id="mientras-tanto">
+    <div class="container">
+      <div class="mientras-box">
+        <h2>Mientras esperas...</h2>
+        <p>Párrafo corto de 1-2 líneas que invita al lector a seguir explorando recursos.</p>
+        <div class="mientras-grid">
+          <a href="/wireframe.html#newsletter" class="mientras-link">
+            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="mientras-link-body">
+              <h3>Suscribirse al newsletter</h3>
+              <p>Un correo semanal.</p>
+            </div>
+            <span class="mientras-arrow">→</span>
+          </a>
+          <a href="/wireframe.html#casos" class="mientras-link">
+            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="mientras-link-body">
+              <h3>Ver casos y aprendizajes</h3>
+              <p>Selección de casos reales.</p>
+            </div>
+            <span class="mientras-arrow">→</span>
+          </a>
+          <a href="#" class="mientras-link">
+            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="mientras-link-body">
+              <h3>Seguirme en LinkedIn/TikTok</h3>
+              <p>Contenido corto y frecuente.</p>
+            </div>
+            <span class="mientras-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="footer-brand-name">[ LOGO / Jean Pierre Segil ]</p>
+          <p class="footer-brand-desc">Descripción breve de 2 líneas sobre la marca personal y su propuesta de valor.</p>
+          <p class="footer-brand-loc">Lima, Perú</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/wireframe.html#hero">Inicio</a></li>
+            <li><a href="/wireframe.html#servicios">Servicios</a></li>
+            <li><a href="/wireframe.html#metodologia">Metodología</a></li>
+            <li><a href="/wireframe.html#sobre-mi">Sobre mí</a></li>
+            <li><a href="/wireframe.html#casos">Casos</a></li>
+            <li><a href="/wireframe.html#contenido">Contenido</a></li>
+            <li><a href="/wireframe.html#faq">FAQ</a></li>
+            <li><a href="/wireframe.html#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Sígueme</h4>
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Jean Pierre Segil. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <!--
+  NOTAS DEL WIREFRAME /agendar — PARA FASE 2 (IMPLEMENTACIÓN)
+
+  Decisiones tomadas en esta fase:
+  - Nav simplificado: logo como enlace al inicio + "← Volver al inicio"
+    a la derecha; se quitó el botón "Agendar reunión" porque ya estamos
+    en la página de destino.
+  - Encabezado centrado (max-width 800px) con 3 indicadores de la sesión
+    (duración, canal, costo) para reducir fricción antes del calendario.
+  - El iframe de Google Calendar NO se inserta todavía: se representa con
+    un placeholder de 600px de altura dentro de un contenedor con border y
+    border-radius para que el iframe "respire" cuando se embeda.
+  - Sección "Qué sucede después de agendar" como tranquilizador post-CTA,
+    para reducir ansiedad de la persona que acaba de reservar.
+  - Bloque "Mientras esperas" con fondo #F5F5F5 (consistente con el
+    newsletter de wireframe.html) y 3 tarjetas con flechita para mantener
+    engagement si el visitante aún no se ha decidido a reservar.
+  - Footer idéntico al de wireframe.html para consistencia absoluta.
+
+  Preguntas pendientes para fase de implementación:
+  - Limitación conocida: Google Calendar Appointment Scheduling NO permite
+    redirigir a una página de agradecimiento personalizada tras reservar.
+    La confirmación queda dentro del widget. Opciones a evaluar:
+      a) Aceptar la limitación y confiar en el correo de Google +
+         la sección "Qué sucede después" visible en la misma página.
+      b) Migrar a Cal.com o Calendly, que sí permiten redirect post-booking
+         (y tracking vía GTM/GA4).
+      c) Mantener Google Calendar para el MVP y migrar en una segunda fase
+         cuando se necesite funnel completo con analytics.
+  - ¿Conviene agregar testimonios o señales de confianza en esta página
+    (logos de clientes, 1-2 quotes cortos) antes del calendario para
+    reducir fricción?
+  - ¿La página /agendar debe estar indexada por buscadores o marcarse
+    como noindex para que solo lleguen visitantes desde el sitio?
+  - ¿Tracking: qué eventos queremos capturar? (page_view, scroll al
+    calendario, click en CTAs de "Mientras esperas", y evento de
+    booking completo si es posible con postMessage del iframe).
+  - ¿Necesitamos versión EN de /agendar o solo ES?
+
+  Siguientes pasos sugeridos:
+  - Reemplazar el placeholder por el iframe real de Google Calendar:
+    <!-- Google Calendar Appointment Scheduling begin - - ->
+    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3EHyFuKaqd2OMzBNpFhOY7JRgKhI5aIUTiNmKblNEwP48g5KRVryU0AHuMTyONiyjuhve_qQ-t?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+    <!-- end Google Calendar Appointment Scheduling - - ->
+  - Definir copy final para H1, párrafo explicativo y tarjetas.
+  - Agregar iconografía definitiva, OG tags, y evento de conversión
+    en Google Analytics / Meta Pixel.
+  -->
+
+</body>
+</html>

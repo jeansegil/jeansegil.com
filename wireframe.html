@@ -246,29 +246,18 @@
       margin-bottom: 40px;
     }
     .pullquote {
-      border-left: 4px solid #333;
-      padding: 24px 32px;
-      margin: 40px 0 0;
-      font-size: 24px;
+      border-left: 3px solid #333;
+      padding: 8px 0 8px 24px;
+      margin: 32px 0 0;
+      font-size: 22px;
       line-height: 1.4;
       font-style: italic;
       color: #333;
-      background: #F5F5F5;
-      position: relative;
-    }
-    .pullquote::before {
-      content: "\201C";
-      font-size: 64px;
-      line-height: 1;
-      color: #999;
-      position: absolute;
-      top: 8px;
-      left: 12px;
-      font-style: normal;
+      background: transparent;
     }
     .pullquote p {
-      margin: 0 0 0 40px;
-      font-size: 24px;
+      margin: 0;
+      font-size: 22px;
       color: #333;
       font-style: italic;
     }
@@ -370,12 +359,12 @@
     /* ========== SOBRE MÍ ========== */
     .sobre-grid {
       display: grid;
-      grid-template-columns: 40% 60%;
+      grid-template-columns: 35% 65%;
       gap: 60px;
       align-items: flex-start;
     }
     .sobre-img {
-      aspect-ratio: 4/5;
+      aspect-ratio: 3/4;
       width: 100%;
     }
     .sobre-text h2 {
@@ -694,7 +683,7 @@
     .footer-grid {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
+      gap: 48px;
     }
     .footer-col h4 {
       font-size: 12px;
@@ -770,11 +759,10 @@
       }
 
       .pullquote {
-        padding: 20px 20px 20px 28px;
+        padding: 6px 0 6px 20px;
         font-size: 18px;
       }
-      .pullquote p { font-size: 18px; margin-left: 24px; }
-      .pullquote::before { font-size: 48px; }
+      .pullquote p { font-size: 18px; }
 
       .btn { margin-bottom: 8px; }
 
@@ -866,7 +854,7 @@
           <li><a href="#faq">FAQ</a></li>
         </ul>
       </nav>
-      <a href="#contacto" class="btn btn-primary nav-cta">Agendar reunión</a>
+      <a href="/agendar.html" class="btn btn-primary nav-cta">Agendar reunión</a>
     </div>
   </header>
 
@@ -879,7 +867,7 @@
           <h1>Título H1 aquí — propuesta principal en 1 o 2 líneas</h1>
           <p class="subtitle">Subtítulo descriptivo de 2 líneas que expande la propuesta y aclara para quién es y qué resuelve.</p>
           <div class="hero-ctas">
-            <a href="#contacto" class="btn btn-primary">CTA primario</a>
+            <a href="/agendar.html" class="btn btn-primary">CTA primario</a>
             <a href="#servicios" class="btn btn-secondary">CTA secundario</a>
           </div>
           <p class="micro">[ Micro-copy debajo de los CTAs — ej. "Sin costo. 30 min." ]</p>
@@ -1268,7 +1256,7 @@
       <h2>Título H2 grande — llamado final a la acción</h2>
       <p class="contacto-desc">Párrafo de 2 líneas que invita al lector a dar el siguiente paso sin fricción.</p>
       <div class="contacto-ctas">
-        <a href="#" class="contacto-btn contacto-btn-primary">Agendar mi reunión gratuita</a>
+        <a href="/agendar.html" class="contacto-btn contacto-btn-primary">Agendar mi reunión gratuita</a>
         <a href="#" class="contacto-btn contacto-btn-secondary">Escribirme por WhatsApp</a>
       </div>
       <p class="contacto-micro">[ También puedes escribirme a: correo@placeholder.com ]</p>
