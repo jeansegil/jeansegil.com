@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dirección visual 3 — Humana cálida</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF8F5;
+      --text: #2B2522;
+      --muted: #6B625B;
+      --olive: #5A7A5A;
+      --olive-dark: #465E46;
+      --terra: #C4876B;
+      --border: #E8E2DA;
+      --paper: #FFFCF7;
+      --serif: "Lora", Georgia, serif;
+      --sans: "Nunito Sans", system-ui, sans-serif;
+      --hand: "Caveat", cursive;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      max-width: 1160px;
+      margin: 0 auto;
+      gap: 28px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.005em;
+    }
+    .nav-logo::after {
+      content: ".";
+      color: var(--terra);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu a {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-menu a:hover {
+      color: var(--olive-dark);
+    }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 22px;
+      background: var(--olive);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--olive-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 112px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: 900px;
+      position: relative;
+    }
+    .hero-leaf {
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      opacity: 0.35;
+      color: var(--olive);
+      transform: rotate(18deg);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--hand);
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--terra);
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background: var(--terra);
+      border-radius: 2px;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.25rem, 5.2vw, 4rem);
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      margin: 0 0 28px;
+      color: var(--text);
+    }
+    h1 .highlight {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    h1 .highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: -2px;
+      bottom: 0.02em;
+      height: 0.32em;
+      background: rgba(196, 135, 107, 0.28);
+      border-radius: 999px 2px 999px 4px;
+      z-index: -1;
+      transform: skewX(-3deg);
+    }
+    .subtitle {
+      font-family: var(--sans);
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0 0 40px;
+      max-width: 660px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px 26px;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--olive);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--olive-dark);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--terra);
+      color: var(--terra);
+    }
+    .btn .arrow {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+    .btn:hover .arrow { transform: translateX(3px); }
+    .micro {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ========== PROBLEMA ========== */
+    .problema {
+      padding: 120px 0;
+      position: relative;
+    }
+    .problema::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 1px;
+      background: var(--border);
+    }
+    .problema-head {
+      max-width: 760px;
+      margin: 0 auto 72px;
+      text-align: center;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 500;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin: 0 0 20px;
+      color: var(--text);
+    }
+    h2 .highlight {
+      position: relative;
+      display: inline-block;
+    }
+    h2 .highlight::after {
+      content: "";
+      position: absolute;
+      left: -2px;
+      right: -2px;
+      bottom: 0.06em;
+      height: 8px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' preserveAspectRatio='none'><path d='M1 5 Q 25 1, 50 4 T 99 3' stroke='%235A7A5A' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      z-index: -1;
+    }
+    .problema-head p {
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0;
+    }
+    .problema-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .problema-item {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .problema-item:nth-child(even) {
+      transform: translateY(16px);
+    }
+    .problema-item:hover {
+      border-color: var(--terra);
+    }
+    .problema-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px 14px 20px 12px;
+      background: rgba(90, 122, 90, 0.12);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .problema-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--olive-dark);
+      stroke-width: 1.75;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .problema-item p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .problema-cierre {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--text);
+      max-width: 740px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 36px 32px;
+      background: var(--paper);
+      border-radius: 28px;
+      border: 1px dashed var(--terra);
+      position: relative;
+    }
+    .problema-cierre::before {
+      content: "";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--hand);
+      font-size: 14px;
+      color: var(--terra);
+      background: var(--bg);
+      padding: 0 12px;
+    }
+    .problema-cierre .hand {
+      font-family: var(--hand);
+      font-size: 26px;
+      color: var(--terra);
+      font-style: normal;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .nav-menu { display: none; }
+      .hero {
+        padding: 72px 0 80px;
+      }
+      .hero-leaf { display: none; }
+      .problema { padding: 80px 0; }
+      .problema-head { margin-bottom: 48px; }
+      .problema-grid {
+        grid-template-columns: 1fr;
+      }
+      .problema-item:nth-child(even) { transform: none; }
+      .subtitle { font-size: 17px; }
+      .problema-cierre { font-size: 18px; padding: 28px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+      .problema-item { padding: 24px; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sección: Nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Jean Pierre Segil</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#problema">Problema</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#casos">Casos</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="nav-cta">Agendar</a>
+    </div>
+  </header>
+
+  <!-- Sección: Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <svg class="hero-leaf" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+          <path d="M100 20 C 60 40, 40 80, 45 130 C 70 120, 110 100, 140 70 C 130 50, 115 30, 100 20 Z" opacity="0.5"/>
+          <path d="M100 30 C 75 60, 60 100, 60 140" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/>
+        </svg>
+        <span class="eyebrow">Consultor de Growth Marketing</span>
+        <h1>Marketing digital con <span class="highlight">criterio</span>, no con fórmulas mágicas.</h1>
+        <p class="subtitle">Ayudo a empresas medianas a entender qué está frenando su crecimiento digital y a construir estrategias basadas en datos, paid media y mejora continua.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary">
+            Agendar reunión gratuita
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#" class="btn btn-secondary">Conocer cómo trabajo</a>
+        </div>
+        <p class="micro">45 minutos · Sin costo · Sin compromiso</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Problema -->
+  <section id="problema" class="problema">
+    <div class="container">
+      <div class="problema-head">
+        <h2>Inviertes en marketing, pero <span class="highlight">algo no cuadra</span>.</h2>
+        <p>Muchas empresas medianas invierten más cada mes en paid media, herramientas y agencias, pero no logran identificar qué está funcionando y qué no. Estos son los síntomas más comunes.</p>
+      </div>
+      <div class="problema-grid">
+        <div class="problema-item">
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10"/><path d="M12 20V4"/><path d="M18 20v-7"/></svg>
+          </div>
+          <p>Inviertes en paid media pero no sabes con certeza qué campaña está funcionando y cuál está drenando presupuesto.</p>
+        </div>
+        <div class="problema-item">
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>
+          </div>
+          <p>Tu agencia reporta métricas cada mes, pero no explica qué hacer con ellas ni cómo impactan el negocio.</p>
+        </div>
+        <div class="problema-item">
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+          </div>
+          <p>Sientes que el crecimiento se estancó en los últimos meses y no logras identificar la causa real del problema.</p>
+        </div>
+        <div class="problema-item">
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+          </div>
+          <p>Tienes datos regados en múltiples plataformas y herramientas, pero ninguna visión consolidada del rendimiento.</p>
+        </div>
+        <div class="problema-item">
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <p>Las decisiones de marketing se toman más por intuición, urgencia o moda que por evidencia concreta.</p>
+        </div>
+        <div class="problema-item">
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <p>Cada decisión termina en el mismo debate: ¿invertimos más, cambiamos de agencia, o cambiamos el producto?</p>
+        </div>
+      </div>
+      <p class="problema-cierre">
+        Si reconoces alguno de estos síntomas, probablemente no necesitas invertir más — necesitas <span class="hand">entender mejor</span> qué está pasando.
+      </p>
+    </div>
+  </section>
+
+  <!--
+  DIRECCIÓN VISUAL 3 — HUMANA CÁLIDA
+
+  Mood: Cercana, cálida y con textura artesanal. Inspiración en
+  Julian.com y Justin Welsh: paleta crema con verde oliva y terracota,
+  Lora serif humanista para títulos, Caveat manuscrita para eyebrow y
+  palabras clave, subrayados orgánicos tipo marcador bajo términos
+  destacados, tarjetas con esquinas asimétricas y ligera asimetría
+  vertical en el grid. Transmite confianza de consultor individual
+  accesible, no de agencia corporativa.
+  -->
+
+</body>
+</html>

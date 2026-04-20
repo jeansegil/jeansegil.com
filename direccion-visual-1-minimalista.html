@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dirección visual 1 — Minimalista premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text: #0A0A0A;
+      --muted: #666666;
+      --accent: #1E3A5F;
+      --border: #E5E5E5;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Inter", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 32px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu a {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .nav-menu a:hover { color: var(--text); }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 140px 0 120px;
+    }
+    .hero-inner {
+      max-width: 860px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 32px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 32px;
+      color: var(--text);
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .subtitle {
+      font-family: var(--sans);
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 48px;
+      max-width: 640px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 24px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.15s, border-color 0.15s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--text); }
+    .micro {
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ========== PROBLEMA ========== */
+    .problema {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+    .problema-head {
+      max-width: 720px;
+      margin-bottom: 72px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin: 0 0 24px;
+      color: var(--text);
+    }
+    .problema-head p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+      max-width: 620px;
+    }
+    .problema-lista {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 56px;
+      border-top: 1px solid var(--border);
+    }
+    .problema-item {
+      display: grid;
+      grid-template-columns: 80px 56px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .problema-num {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .problema-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--text);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .problema-item p {
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--text);
+      margin: 0;
+      font-weight: 400;
+    }
+    .problema-cierre {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.5;
+      color: var(--text);
+      max-width: 720px;
+      margin: 0;
+      padding-left: 24px;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .nav-menu { display: none; }
+      .hero { padding: 80px 0 72px; }
+      .problema { padding: 80px 0; }
+      .problema-head { margin-bottom: 48px; }
+      .problema-item {
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+        padding: 20px 0;
+      }
+      .problema-num {
+        grid-column: 1;
+        font-size: 24px;
+      }
+      .problema-icon { display: none; }
+      .subtitle { font-size: 17px; }
+      .problema-cierre { font-size: 18px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .nav-inner { padding: 16px 20px; gap: 16px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sección: Nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Jean Pierre Segil</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#problema">Problema</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#metodologia">Metodología</a></li>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#casos">Casos</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="nav-cta">Agendar</a>
+    </div>
+  </header>
+
+  <!-- Sección: Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="eyebrow">Consultor de Growth Marketing</span>
+        <h1>Marketing digital con <em>criterio</em>, no con fórmulas mágicas.</h1>
+        <p class="subtitle">Ayudo a empresas medianas a entender qué está frenando su crecimiento digital y a construir estrategias basadas en datos, paid media y mejora continua.</p>
+        <div class="hero-ctas">
+          <a href="#" class="btn btn-primary">Agendar reunión gratuita</a>
+          <a href="#" class="btn btn-secondary">Conocer cómo trabajo</a>
+        </div>
+        <p class="micro">45 minutos · Sin costo · Sin compromiso</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Problema -->
+  <section id="problema" class="problema">
+    <div class="container">
+      <div class="problema-head">
+        <h2>Inviertes en marketing, pero algo no cuadra.</h2>
+        <p>Muchas empresas medianas invierten más cada mes en paid media, herramientas y agencias, pero no logran identificar qué está funcionando y qué no. Estos son los síntomas más comunes.</p>
+      </div>
+      <ul class="problema-lista">
+        <li class="problema-item">
+          <span class="problema-num">01</span>
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M6 20V10"/><path d="M12 20V4"/><path d="M18 20v-7"/></svg>
+          </div>
+          <p>Inviertes en paid media pero no sabes con certeza qué campaña está funcionando y cuál está drenando presupuesto.</p>
+        </li>
+        <li class="problema-item">
+          <span class="problema-num">02</span>
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>
+          </div>
+          <p>Tu agencia reporta métricas cada mes, pero no explica qué hacer con ellas ni cómo impactan el negocio.</p>
+        </li>
+        <li class="problema-item">
+          <span class="problema-num">03</span>
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+          </div>
+          <p>Sientes que el crecimiento se estancó en los últimos meses y no logras identificar la causa real del problema.</p>
+        </li>
+        <li class="problema-item">
+          <span class="problema-num">04</span>
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+          </div>
+          <p>Tienes datos regados en múltiples plataformas y herramientas, pero ninguna visión consolidada del rendimiento.</p>
+        </li>
+        <li class="problema-item">
+          <span class="problema-num">05</span>
+          <div class="problema-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <p>Las decisiones de marketing se toman más por intuición, urgencia o moda que por evidencia concreta.</p>
+        </li>
+      </ul>
+      <p class="problema-cierre">Si reconoces alguno de estos síntomas, probablemente no necesitas invertir más — necesitas entender mejor qué está pasando.</p>
+    </div>
+  </section>
+
+  <!--
+  DIRECCIÓN VISUAL 1 — MINIMALISTA PREMIUM
+
+  Mood: Editorial, sofisticada y atemporal. Inspiración en publicaciones
+  impresas tipo FT Weekend o Monocle: mucho aire blanco, tipografía serif
+  Fraunces para títulos en contraste con Inter para cuerpo, acento único
+  en azul profundo #1E3A5F reservado para CTAs y guiños editoriales
+  (itálica en H1, barra lateral en el cierre). Transmite confianza de
+  boutique de consultoría premium sin gritar; la jerarquía la construyen
+  las proporciones y los whitespace, no los colores.
+  -->
+
+</body>
+</html>
