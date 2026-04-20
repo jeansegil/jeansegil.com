@@ -34,6 +34,7 @@
     section {
       padding: 80px 0;
       border-bottom: 1px dashed #E0E0E0;
+      scroll-margin-top: 80px;
     }
 
     /* Tipografía — jerarquía en grises */
@@ -409,10 +410,19 @@
       font-size: 14px;
       color: #333;
       margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .sobre-ficha-item strong {
       color: #666;
       font-weight: 600;
+    }
+    .ficha-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: #666;
     }
 
     /* ========== EXPERIENCIA ========== */
@@ -829,7 +839,10 @@
 
     @media (max-width: 768px) {
       /* --- Espaciado vertical general --- */
-      section { padding: 56px 0; }
+      section {
+        padding: 56px 0;
+        scroll-margin-top: 70px;
+      }
 
       /* --- Hero: H1 más compacto --- */
       h1 {
@@ -838,6 +851,11 @@
       }
 
       /* --- Nav: hamburger menu --- */
+      .nav-inner {
+        justify-content: flex-start;
+        gap: 12px;
+      }
+      .nav-logo { flex-shrink: 1; min-width: 0; }
       .nav-hamburger { display: flex; }
       .nav-links {
         position: fixed;
@@ -865,13 +883,15 @@
         gap: 24px;
         text-align: center;
       }
-      .nav-menu a { font-size: 18px; color: #333; }
+      .nav-menu a { font-size: 20px; color: #333; padding: 8px 16px; display: inline-block; }
       .nav-cta {
-        font-size: 14px;
-        padding: 14px 28px;
-        min-height: 44px;
+        margin-left: auto;
+        font-size: 13px;
+        padding: 10px 16px;
+        min-height: 40px;
         display: inline-flex;
         align-items: center;
+        flex-shrink: 0;
       }
       /* Hamburger → X cuando está abierto */
       .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(1) {
@@ -980,8 +1000,8 @@
           <li><a href="#contenido">Contenido</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
-        <a href="/agendar.html" class="btn btn-primary nav-cta">Agendar reunión</a>
       </nav>
+      <a href="/agendar.html" class="btn btn-primary nav-cta">Agendar reunión</a>
       <label for="nav-toggle" class="nav-hamburger" aria-label="Abrir menú">
         <span></span>
         <span></span>
@@ -1182,9 +1202,18 @@
           <p>Párrafo 3 — enfoque/filosofía, de 4-5 líneas. Cómo trabajo y qué me diferencia.</p>
           <p>Párrafo 4 — cierre personal, de 4-5 líneas. Qué me motiva o cómo me gusta trabajar con clientes.</p>
           <div class="sobre-ficha">
-            <p class="sobre-ficha-item"><strong>📍 Ubicación:</strong> [placeholder Lima, Perú]</p>
-            <p class="sobre-ficha-item"><strong>🎯 Enfoque:</strong> [placeholder Growth Marketing · Paid Media]</p>
-            <p class="sobre-ficha-item"><strong>🛠️ Herramientas:</strong> [placeholder Google Ads · Meta Ads · Looker Studio]</p>
+            <p class="sobre-ficha-item">
+              <svg class="ficha-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span><strong>Ubicación:</strong> [placeholder Lima, Perú]</span>
+            </p>
+            <p class="sobre-ficha-item">
+              <svg class="ficha-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              <span><strong>Enfoque:</strong> [placeholder Growth Marketing · Paid Media]</span>
+            </p>
+            <p class="sobre-ficha-item">
+              <svg class="ficha-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              <span><strong>Herramientas:</strong> [placeholder Google Ads · Meta Ads · Looker Studio]</span>
+            </p>
           </div>
         </div>
       </div>
@@ -1496,6 +1525,15 @@
   - Revisar performance, accesibilidad (contraste, foco, semántica ARIA),
     SEO on-page y Open Graph tags antes de publicar.
   -->
+
+  <script>
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        const toggle = document.getElementById('nav-toggle');
+        if (toggle) toggle.checked = false;
+      });
+    });
+  </script>
 
 </body>
 </html>
