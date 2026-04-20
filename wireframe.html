@@ -159,6 +159,11 @@
       font-weight: 700;
       color: #333;
     }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
     .nav-menu {
       display: flex;
       gap: 24px;
@@ -174,6 +179,27 @@
     .nav-cta {
       font-size: 13px;
       padding: 10px 18px;
+    }
+    .nav-toggle { display: none; }
+    .nav-hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      position: relative;
+      z-index: 95;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #333;
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
     }
 
     /* ========== HERO ========== */
@@ -745,13 +771,9 @@
       }
       .hero-img { min-height: 280px; }
 
-      .nav-inner { flex-wrap: wrap; gap: 12px; }
-      .nav-menu {
-        order: 3;
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 12px 16px;
-      }
+      .nav-links { gap: 16px; }
+      .nav-menu { gap: 16px; }
+      .nav-menu a { font-size: 13px; }
       .nav-cta { font-size: 12px; padding: 8px 14px; }
 
       .marcas-row {
@@ -805,11 +827,115 @@
       }
     }
 
+    @media (max-width: 768px) {
+      /* --- Espaciado vertical general --- */
+      section { padding: 56px 0; }
+
+      /* --- Hero: H1 más compacto --- */
+      h1 {
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        line-height: 1.15;
+      }
+
+      /* --- Nav: hamburger menu --- */
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        padding: 96px 24px 32px;
+        z-index: 90;
+        transform: translateY(-100%);
+        transition: transform 0.25s ease;
+        pointer-events: none;
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-links {
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .nav-menu {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      .nav-menu a { font-size: 18px; color: #333; }
+      .nav-cta {
+        font-size: 14px;
+        padding: 14px 28px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      /* Hamburger → X cuando está abierto */
+      .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* --- Marcas: scroll horizontal deslizable --- */
+      .marcas-row {
+        display: flex;
+        grid-template-columns: none;
+        overflow-x: auto;
+        gap: 16px;
+        padding: 0 20px;
+        margin: 0 -24px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .marcas-row::-webkit-scrollbar { display: none; }
+      .marcas-row .placeholder-logo {
+        min-width: 140px;
+        flex-shrink: 0;
+      }
+
+      /* --- Sobre mí: imagen cuadrada, altura capada --- */
+      .sobre-img {
+        aspect-ratio: 1/1;
+        max-height: 400px;
+        object-fit: cover;
+      }
+
+      /* --- Casos: imagen 16:9 para reducir alto --- */
+      .caso-img {
+        aspect-ratio: 16/9;
+      }
+
+      /* --- Inputs y botones: min 44px táctil --- */
+      .btn,
+      .contacto-btn,
+      .newsletter-form input,
+      .newsletter-form button {
+        min-height: 44px;
+      }
+      .newsletter-form input {
+        padding: 12px 14px;
+      }
+      .newsletter-form button {
+        padding: 12px 24px;
+      }
+
+      /* --- FAQ: padding-right del ícono --- */
+      .faq-wrap summary {
+        padding-right: 16px;
+      }
+    }
+
     @media (max-width: 480px) {
-      section { padding: 60px 0; }
       h1 { font-size: 32px; }
       h2 { font-size: 26px; }
-      .marcas-row { grid-template-columns: repeat(2, 1fr); }
 
       .servicios-grid { grid-template-columns: 1fr; }
       .exp-grid { grid-template-columns: 1fr; }
@@ -841,9 +967,10 @@
 
   <!-- Sección: Nav Sticky -->
   <header class="nav">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
     <div class="nav-inner">
       <div class="nav-logo">[ LOGO / Jean Pierre Segil ]</div>
-      <nav>
+      <nav class="nav-links">
         <ul class="nav-menu">
           <li><a href="#problema">Problema</a></li>
           <li><a href="#servicios">Servicios</a></li>
@@ -853,8 +980,13 @@
           <li><a href="#contenido">Contenido</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
+        <a href="/agendar.html" class="btn btn-primary nav-cta">Agendar reunión</a>
       </nav>
-      <a href="/agendar.html" class="btn btn-primary nav-cta">Agendar reunión</a>
+      <label for="nav-toggle" class="nav-hamburger" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
     </div>
   </header>
 
