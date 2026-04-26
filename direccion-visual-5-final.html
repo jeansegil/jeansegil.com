@@ -16,7 +16,6 @@
       --accent: #0866FF;
       --accent-hover: #0052CC;
       --accent-2: #6C5CE7;
-      --mint: #10B981;
       --border: #DADDE1;
       --dark: #0A0A0A;
       --dark-card: #1A1A1A;
@@ -132,23 +131,13 @@
       align-items: center;
     }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-block;
       font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 20px;
-    }
-    .eyebrow--hero::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
     }
     h1 {
       font-size: clamp(2rem, 5vw, 3.5rem);
@@ -423,7 +412,7 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-text">
-          <span class="eyebrow eyebrow--hero">Consultor de Growth Marketing</span>
+          <span class="eyebrow">Consultor de Growth Marketing</span>
           <h1>Marketing digital con criterio, no con fórmulas mágicas.</h1>
           <p class="subtitle">Ayudo a empresas medianas a entender qué está frenando su crecimiento digital y a construir estrategias basadas en datos, paid media y mejora continua.</p>
           <div class="hero-ctas">
@@ -497,7 +486,7 @@
   Esta es la dirección visual final aprobada para el sitio. Toma como
   base la dirección 4 (Meta Blueprint) — Inter, paleta blanco/negro/
   azul #0866FF, hero 55/45, eyebrow azul mayúsculas, tarjetas con
-  border 1px y radius 12px, espaciados 96px/64px — y le incorpora 3
+  border 1px y radius 12px, espaciados 96px/64px — y le incorpora 2
   elementos clave de la dirección 2 (Tech Moderno):
 
   1. Logo compuesto con mark cuadrado azul "JS" + texto "Jean Pierre
@@ -507,12 +496,14 @@
      la continuidad blanca y crea contraste cinematográfico, con
      tarjetas #1A1A1A, íconos sobre fondo azul translúcido y un
      mensaje de cierre con gradiente azul-violeta sutil.
-  3. Indicador "online" verde menta (#10B981) en el eyebrow del hero
-     para señalar disponibilidad activa del consultor.
 
-  El resultado combina la solidez institucional de Meta Blueprint
-  con la modernidad y dinamismo del estilo Tech, sin caer en
-  excesos visuales.
+  Principios de marca aplicados:
+  - Único acento de color: azul corporativo #0866FF (sin verdes,
+    rojos ni colores funcionales adicionales).
+  - Sobriedad institucional: sin emojis, indicadores "online",
+    badges decorativos ni glows.
+  - Jerarquía limpia: solo primario, secundario y acento.
+  - Coherencia entre fondos: el azul es el mismo en blanco y oscuro.
   -->
 
 </body>
