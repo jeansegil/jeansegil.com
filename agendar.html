@@ -3,12 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Agenda tu sesión gratuita con Jean Pierre Segil — wireframe">
+  <meta name="description" content="Agenda tu sesión gratuita — Jean Pierre Segil">
   <title>Agendar sesión — Jean Pierre Segil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* =========================================================
-       WIREFRAME /agendar — Coherente con wireframe.html
-       ========================================================= */
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F0F2F5;
+      --text-primary: #1C1E21;
+      --text-secondary: #606770;
+      --border-light: #DADDE1;
+
+      --bg-dark: #0A0A0A;
+      --bg-dark-card: #1A1A1A;
+      --border-dark: #2A2A2A;
+      --text-light: #FFFFFF;
+      --text-light-secondary: #A0A0A0;
+
+      --accent: #0866FF;
+      --accent-hover: #0052CC;
+      --accent-bg-soft: rgba(8, 102, 255, 0.08);
+      --accent-bg-soft-strong: rgba(8, 102, 255, 0.18);
+
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --section-padding-desktop: 96px;
+      --section-padding-mobile: 64px;
+    }
 
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -16,134 +39,138 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      color: #333;
-      background: #fff;
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 32px;
     }
-
-    section {
-      padding: 80px 0;
-      border-bottom: 1px dashed #E0E0E0;
-      scroll-margin-top: 80px;
+    .container-narrow {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .container-medium {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
     }
 
     h1 {
-      font-size: clamp(2.25rem, 5vw, 3.5rem);
-      line-height: 1.1;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 700;
-      margin: 0 0 24px;
-      color: #333;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--text-primary);
     }
     h2 {
-      font-size: 40px;
-      line-height: 1.15;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
       font-weight: 700;
-      margin: 0 0 16px;
-      color: #333;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0;
+      color: var(--text-primary);
     }
     h3 {
-      font-size: 22px;
-      line-height: 1.25;
+      font-size: 1.125rem;
       font-weight: 600;
-      margin: 0 0 12px;
-      color: #333;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: var(--text-primary);
     }
     p {
-      font-size: 16px;
+      margin: 0;
+      color: var(--text-secondary);
       line-height: 1.6;
-      color: #666;
-      margin: 0 0 16px;
     }
+
     .eyebrow {
       display: inline-block;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 16px;
-    }
-    .subtitle {
-      font-size: 18px;
-      color: #666;
-      margin-bottom: 32px;
-    }
-
-    /* Placeholders */
-    .placeholder {
-      border: 2px dashed #999;
-      border-radius: 12px;
-      background: #F5F5F5;
-      color: #666;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      padding: 16px;
-      min-height: 80px;
-    }
-    .placeholder-icon {
-      width: 48px;
-      height: 48px;
-      min-height: 48px;
-      border-radius: 8px;
-      border-width: 2px;
-      background: #E0E0E0;
-      color: #333;
-      font-size: 10px;
+      font-size: 0.875rem;
       font-weight: 600;
-      flex-shrink: 0;
-      padding: 4px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0;
     }
 
-    /* ========== NAV STICKY ========== */
+    /* ========== NAV ========== */
     .nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #fff;
-      border-bottom: 1px solid #E0E0E0;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-light);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 24px;
+      padding: 16px 32px;
       max-width: 1200px;
       margin: 0 auto;
       gap: 24px;
     }
-    .nav-logo {
-      font-size: 16px;
-      font-weight: 700;
-      color: #333;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .brand-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
     }
     .nav-back {
-      font-size: 14px;
-      color: #666;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-primary);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
+    .nav-back:hover { color: var(--accent); }
 
-    /* ========== ENCABEZADO AGENDA ========== */
-    .agenda-head {
+    /* ========== ENCABEZADO ========== */
+    .agenda-header {
+      padding: var(--section-padding-desktop) 0;
       text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-      padding-top: 20px;
     }
-    .agenda-head p {
-      max-width: 640px;
-      margin: 0 auto 32px;
+    .agenda-header .eyebrow {
+      margin-bottom: 16px;
+    }
+    .agenda-header h1 {
+      text-align: center;
+    }
+    .agenda-header .agenda-desc {
+      max-width: 600px;
+      margin: 32px auto 0;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
     }
     .agenda-indicadores {
       display: flex;
@@ -153,106 +180,167 @@
       margin-top: 32px;
     }
     .agenda-indicador {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      color: #333;
+      gap: 8px;
+      font-size: 0.9375rem;
       font-weight: 500;
+      color: var(--text-primary);
+    }
+    .agenda-indicador svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
     }
 
     /* ========== CALENDARIO ========== */
-    .calendario-wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      border: 1px solid #E0E0E0;
+    #calendario {
+      background: var(--bg-secondary);
+      padding: 80px 0;
+    }
+    .calendario-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
       border-radius: 16px;
-      background: #fff;
       padding: 24px;
     }
     .calendario-placeholder {
-      min-height: 600px;
+      aspect-ratio: 16/10;
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px dashed var(--border-light);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 32px;
+    }
+    .calendario-placeholder span {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-secondary);
     }
 
     /* ========== QUE SIGUE ========== */
+    .que-sigue {
+      padding: var(--section-padding-desktop) 0;
+    }
     .section-head-center {
       text-align: center;
       max-width: 720px;
-      margin: 0 auto 56px;
+      margin: 0 auto 48px;
     }
+    .section-head-center .eyebrow { margin-bottom: 16px; }
+    .section-head-center h2 { margin-top: 0; }
     .pasos-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
     .paso-card {
-      border: 1px solid #E0E0E0;
-      border-radius: 16px;
-      background: #fff;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
       padding: 32px;
     }
+    .paso-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: var(--accent-bg-soft);
+      border: 1px dashed var(--accent-bg-soft-strong);
+      display: grid;
+      place-items: center;
+      font-size: 0.625rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
     .paso-card h3 {
-      margin: 20px 0 8px;
+      margin: 0 0 12px;
     }
     .paso-card p {
-      margin: 0;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
     }
 
-    /* ========== MIENTRAS TANTO ========== */
+    /* ========== MIENTRAS ESPERAS ========== */
+    .mientras {
+      background: var(--bg-secondary);
+      padding: var(--section-padding-desktop) 0;
+    }
     .mientras-box {
-      background: #F5F5F5;
+      background: var(--bg-primary);
       border-radius: 24px;
-      padding: 64px;
+      padding: 64px 48px;
       max-width: 1000px;
       margin: 0 auto;
-      text-align: center;
     }
-    .mientras-box h2 { margin-bottom: 12px; }
-    .mientras-box > p {
+    .mientras-box .section-head-center {
+      margin-bottom: 32px;
+    }
+    .mientras-box h2 { margin-bottom: 0; }
+    .mientras-box .mientras-desc {
       max-width: 540px;
-      margin: 0 auto 40px;
+      margin: 16px auto 0;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      text-align: center;
     }
     .mientras-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      text-align: left;
+      gap: 16px;
     }
     .mientras-link {
       display: flex;
       align-items: center;
       gap: 16px;
-      background: #fff;
-      border: 1px solid #E0E0E0;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
       border-radius: 12px;
       padding: 20px;
       text-decoration: none;
-      color: #333;
-      transition: border-color 0.2s;
+      color: var(--text-primary);
+      transition: border-color 0.2s ease;
     }
-    .mientras-link:hover { border-color: #999; }
-    .mientras-link-body {
-      flex: 1;
-    }
-    .mientras-link-body h3 {
-      font-size: 15px;
-      margin: 0 0 2px;
+    .mientras-link:hover { border-color: var(--accent); }
+    .mientras-link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--accent-bg-soft);
+      border: 1px dashed var(--accent-bg-soft-strong);
+      display: grid;
+      place-items: center;
+      font-size: 0.5625rem;
       font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
     }
-    .mientras-link-body p {
-      font-size: 13px;
-      color: #999;
-      margin: 0;
+    .mientras-link-text {
+      flex: 1;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
     }
     .mientras-arrow {
-      font-size: 18px;
-      color: #666;
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--accent);
     }
 
     /* ========== FOOTER ========== */
     .footer {
-      background: #fff;
-      border-top: 1px solid #E0E0E0;
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border-light);
       padding: 48px 0 24px;
     }
     .footer-grid {
@@ -261,12 +349,12 @@
       gap: 48px;
     }
     .footer-col h4 {
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #999;
-      margin: 0 0 16px;
+      font-size: 0.75rem;
       font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
     }
     .footer-col ul {
       list-style: none;
@@ -274,86 +362,73 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     .footer-col a {
-      color: #666;
+      color: var(--text-primary);
       text-decoration: none;
-      font-size: 14px;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
     }
-    .footer-brand-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: #333;
-      margin: 0 0 12px;
-    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-brand { margin-bottom: 16px; }
     .footer-brand-desc {
-      font-size: 14px;
-      color: #666;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
       margin: 0 0 12px;
-      max-width: 320px;
+      max-width: 280px;
+      line-height: 1.55;
     }
     .footer-brand-loc {
-      font-size: 13px;
-      color: #999;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
       margin: 0;
     }
     .footer-bottom {
       margin-top: 48px;
       padding-top: 24px;
-      border-top: 1px solid #E0E0E0;
+      border-top: 1px solid var(--border-light);
       text-align: center;
-      font-size: 13px;
-      color: #999;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
     }
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
-      h1 { font-size: 40px; }
-      h2 { font-size: 30px; }
-      h3 { font-size: 20px; }
-
-      .agenda-indicadores {
-        gap: 20px;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .pasos-grid { grid-template-columns: 1fr; }
-
-      .mientras-box { padding: 48px 32px; }
-      .mientras-grid { grid-template-columns: 1fr; }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
-      }
+      .pasos-grid { grid-template-columns: 1fr; gap: 16px; }
+      .mientras-grid { grid-template-columns: 1fr; gap: 12px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     }
 
     @media (max-width: 768px) {
-      section {
-        padding: 56px 0;
-        scroll-margin-top: 70px;
+      .agenda-header { padding: var(--section-padding-mobile) 0; }
+      #calendario { padding: var(--section-padding-mobile) 0; }
+      .que-sigue { padding: var(--section-padding-mobile) 0; }
+      .mientras { padding: var(--section-padding-mobile) 0; }
+
+      .agenda-indicadores {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
       }
-      h1 {
-        font-size: clamp(1.75rem, 8vw, 2.5rem);
-        line-height: 1.15;
-      }
-      .nav-back { min-height: 44px; display: inline-flex; align-items: center; }
-      .mientras-link { min-height: 44px; }
+
+      .calendario-placeholder { aspect-ratio: 4/3; }
+      .calendario-card { padding: 16px; }
+
+      .mientras-box { padding: 48px 24px; }
+
+      .nav-inner { padding: 14px 24px; }
     }
 
     @media (max-width: 480px) {
-      h1 { font-size: 32px; }
-      h2 { font-size: 26px; }
-
-      .calendario-wrap { padding: 16px; }
-      .calendario-placeholder { min-height: 480px; }
-
-      .mientras-box {
-        padding: 40px 24px;
-        border-radius: 16px;
-      }
+      .container,
+      .container-narrow,
+      .container-medium { padding: 0 20px; }
+      .nav-inner { padding: 14px 20px; gap: 12px; }
+      .brand-name { display: none; }
+      .nav-back { font-size: 0.875rem; }
 
       .footer-grid { grid-template-columns: 1fr; }
     }
@@ -364,66 +439,69 @@
   <!-- Sección: Nav Sticky -->
   <header class="nav">
     <div class="nav-inner">
-      <a href="/wireframe.html" class="nav-logo">[ LOGO / Jean Pierre Segil ]</a>
+      <a href="/wireframe.html" class="brand">
+        <span class="brand-mark">JS</span>
+        <span class="brand-name">Jean Pierre Segil</span>
+      </a>
       <a href="/wireframe.html" class="nav-back">← Volver al inicio</a>
     </div>
   </header>
 
-  <!-- Sección: Encabezado Agenda -->
-  <section id="encabezado-agenda">
-    <div class="container">
-      <div class="agenda-head">
-        <span class="eyebrow">[ EYEBROW: Sesión gratuita ]</span>
-        <h1>Título H1 — Agenda tu sesión gratuita de 45 minutos</h1>
-        <p>Párrafo explicativo de 2-3 líneas sobre qué ocurrirá en la sesión, qué necesita traer la persona y cómo prepararse.</p>
-        <div class="agenda-indicadores">
-          <div class="agenda-indicador">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
-            <span>45 minutos</span>
-          </div>
-          <div class="agenda-indicador">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
-            <span>Vía Google Meet</span>
-          </div>
-          <div class="agenda-indicador">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
-            <span>Sin costo</span>
-          </div>
-        </div>
+  <!-- Sección: Encabezado de agenda -->
+  <section class="agenda-header">
+    <div class="container-narrow">
+      <span class="eyebrow">Sesión gratuita</span>
+      <h1>[ TÍTULO H1 — Agenda tu sesión gratuita de 45 minutos ]</h1>
+      <p class="agenda-desc">[ Párrafo explicativo de 2-3 líneas sobre qué ocurrirá en la sesión, qué necesita traer la persona y cómo prepararse. ]</p>
+      <div class="agenda-indicadores">
+        <span class="agenda-indicador">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          45 minutos
+        </span>
+        <span class="agenda-indicador">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          Vía Google Meet
+        </span>
+        <span class="agenda-indicador">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Sin costo
+        </span>
       </div>
     </div>
   </section>
 
   <!-- Sección: Calendario -->
   <section id="calendario">
-    <div class="container">
-      <div class="calendario-wrap">
-        <div class="placeholder calendario-placeholder">
-          [ IFRAME: Google Calendar Appointment Scheduling — altura 600px ]
+    <div class="container-medium">
+      <div class="calendario-card">
+        <!-- AQUI VA EL EMBED DE GOOGLE CALENDAR -->
+        <div class="calendario-placeholder">
+          <span>[ IFRAME: Google Calendar Appointment Scheduling — altura 600px ]</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sección: Que sigue -->
-  <section id="que-sigue">
+  <!-- Sección: Qué sucede después -->
+  <section class="que-sigue">
     <div class="container">
       <div class="section-head-center">
+        <span class="eyebrow">Tres pasos simples</span>
         <h2>Qué sucede después de agendar</h2>
       </div>
       <div class="pasos-grid">
         <article class="paso-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="paso-icon">[ ÍCONO ]</div>
           <h3>Paso 1 — Confirmación</h3>
           <p>Recibirás correo de confirmación con el link de Meet.</p>
         </article>
         <article class="paso-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="paso-icon">[ ÍCONO ]</div>
           <h3>Paso 2 — Revisión</h3>
           <p>Revisaré tu información antes de nuestra reunión.</p>
         </article>
         <article class="paso-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="paso-icon">[ ÍCONO ]</div>
           <h3>Paso 3 — Sesión</h3>
           <p>Nos vemos en la fecha agendada.</p>
         </article>
@@ -431,35 +509,29 @@
     </div>
   </section>
 
-  <!-- Sección: Mientras tanto -->
-  <section id="mientras-tanto">
+  <!-- Sección: Mientras esperas -->
+  <section class="mientras">
     <div class="container">
       <div class="mientras-box">
-        <h2>Mientras esperas...</h2>
-        <p>Párrafo corto de 1-2 líneas que invita al lector a seguir explorando recursos.</p>
+        <div class="section-head-center">
+          <span class="eyebrow">Mientras esperas</span>
+          <h2>Mientras tanto…</h2>
+          <p class="mientras-desc">Párrafo corto de 1-2 líneas que invita al lector a seguir explorando recursos.</p>
+        </div>
         <div class="mientras-grid">
           <a href="/wireframe.html#newsletter" class="mientras-link">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
-            <div class="mientras-link-body">
-              <h3>Suscribirse al newsletter</h3>
-              <p>Un correo semanal.</p>
-            </div>
+            <span class="mientras-link-icon">[ ÍCONO ]</span>
+            <span class="mientras-link-text">Suscribirme a la newsletter</span>
             <span class="mientras-arrow">→</span>
           </a>
           <a href="/wireframe.html#casos" class="mientras-link">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
-            <div class="mientras-link-body">
-              <h3>Ver casos y aprendizajes</h3>
-              <p>Selección de casos reales.</p>
-            </div>
+            <span class="mientras-link-icon">[ ÍCONO ]</span>
+            <span class="mientras-link-text">Ver casos y aprendizajes</span>
             <span class="mientras-arrow">→</span>
           </a>
           <a href="#" class="mientras-link">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
-            <div class="mientras-link-body">
-              <h3>Seguirme en LinkedIn/TikTok</h3>
-              <p>Contenido corto y frecuente.</p>
-            </div>
+            <span class="mientras-link-icon">[ ÍCONO ]</span>
+            <span class="mientras-link-text">Seguirme en LinkedIn / TikTok</span>
             <span class="mientras-arrow">→</span>
           </a>
         </div>
@@ -472,7 +544,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <p class="footer-brand-name">[ LOGO / Jean Pierre Segil ]</p>
+          <a href="/wireframe.html" class="brand footer-brand">
+            <span class="brand-mark">JS</span>
+            <span class="brand-name">Jean Pierre Segil</span>
+          </a>
           <p class="footer-brand-desc">Descripción breve de 2 líneas sobre la marca personal y su propuesta de valor.</p>
           <p class="footer-brand-loc">Lima, Perú</p>
         </div>
@@ -511,55 +586,6 @@
       </div>
     </div>
   </footer>
-
-  <!--
-  NOTAS DEL WIREFRAME /agendar — PARA FASE 2 (IMPLEMENTACIÓN)
-
-  Decisiones tomadas en esta fase:
-  - Nav simplificado: logo como enlace al inicio + "← Volver al inicio"
-    a la derecha; se quitó el botón "Agendar reunión" porque ya estamos
-    en la página de destino.
-  - Encabezado centrado (max-width 800px) con 3 indicadores de la sesión
-    (duración, canal, costo) para reducir fricción antes del calendario.
-  - El iframe de Google Calendar NO se inserta todavía: se representa con
-    un placeholder de 600px de altura dentro de un contenedor con border y
-    border-radius para que el iframe "respire" cuando se embeda.
-  - Sección "Qué sucede después de agendar" como tranquilizador post-CTA,
-    para reducir ansiedad de la persona que acaba de reservar.
-  - Bloque "Mientras esperas" con fondo #F5F5F5 (consistente con el
-    newsletter de wireframe.html) y 3 tarjetas con flechita para mantener
-    engagement si el visitante aún no se ha decidido a reservar.
-  - Footer idéntico al de wireframe.html para consistencia absoluta.
-
-  Preguntas pendientes para fase de implementación:
-  - Limitación conocida: Google Calendar Appointment Scheduling NO permite
-    redirigir a una página de agradecimiento personalizada tras reservar.
-    La confirmación queda dentro del widget. Opciones a evaluar:
-      a) Aceptar la limitación y confiar en el correo de Google +
-         la sección "Qué sucede después" visible en la misma página.
-      b) Migrar a Cal.com o Calendly, que sí permiten redirect post-booking
-         (y tracking vía GTM/GA4).
-      c) Mantener Google Calendar para el MVP y migrar en una segunda fase
-         cuando se necesite funnel completo con analytics.
-  - ¿Conviene agregar testimonios o señales de confianza en esta página
-    (logos de clientes, 1-2 quotes cortos) antes del calendario para
-    reducir fricción?
-  - ¿La página /agendar debe estar indexada por buscadores o marcarse
-    como noindex para que solo lleguen visitantes desde el sitio?
-  - ¿Tracking: qué eventos queremos capturar? (page_view, scroll al
-    calendario, click en CTAs de "Mientras esperas", y evento de
-    booking completo si es posible con postMessage del iframe).
-  - ¿Necesitamos versión EN de /agendar o solo ES?
-
-  Siguientes pasos sugeridos:
-  - Reemplazar el placeholder por el iframe real de Google Calendar:
-    <!-- Google Calendar Appointment Scheduling begin - - ->
-    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3EHyFuKaqd2OMzBNpFhOY7JRgKhI5aIUTiNmKblNEwP48g5KRVryU0AHuMTyONiyjuhve_qQ-t?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-    <!-- end Google Calendar Appointment Scheduling - - ->
-  - Definir copy final para H1, párrafo explicativo y tarjetas.
-  - Agregar iconografía definitiva, OG tags, y evento de conversión
-    en Google Analytics / Meta Pixel.
-  -->
 
 </body>
 </html>
