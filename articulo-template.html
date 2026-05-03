@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plantilla de artículo — Jean Pierre Segil">
+  <title>Artículo — Jean Pierre Segil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F0F2F5;
+      --text-primary: #1C1E21;
+      --text-secondary: #606770;
+      --border-light: #DADDE1;
+
+      --accent: #0866FF;
+      --accent-hover: #0052CC;
+      --accent-bg-soft: rgba(8, 102, 255, 0.08);
+
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+
+      --section-padding-desktop: 96px;
+      --section-padding-mobile: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .container-reading {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .container-body {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .nav-inner {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      padding: 16px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 32px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .brand-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-menu a:hover { color: var(--accent); }
+    .nav-cta {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-cta:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 4px 12px rgba(8, 102, 255, 0.25);
+    }
+    .nav-toggle { display: none; }
+    .nav-hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      position: relative;
+      z-index: 95;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    /* ========== ARTICLE HEADER ========== */
+    .article-header {
+      padding: var(--section-padding-desktop) 0 0;
+    }
+    .article-header .eyebrow {
+      display: block;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .article-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--text-primary);
+      text-align: left;
+    }
+    .article-meta {
+      margin: 16px 0 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    /* ========== VIDEO EMBED ========== */
+    .article-video-wrap {
+      margin-top: 48px;
+    }
+    .article-video {
+      margin: 0 auto;
+      max-width: 360px;
+      width: 100%;
+    }
+    .article-video-frame {
+      aspect-ratio: 9/16;
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-secondary);
+    }
+    .article-video-icon {
+      font-size: 64px;
+      line-height: 1;
+      color: var(--text-secondary);
+    }
+    .article-video-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ========== ARTICLE BODY ========== */
+    .article-body {
+      margin-top: 48px;
+    }
+    .article-body p {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin: 0 0 24px;
+    }
+    .article-body h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      margin: 48px 0 16px;
+    }
+    .article-body h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin: 32px 0 12px;
+    }
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 24px;
+      padding-left: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .article-body li {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+    .article-body blockquote {
+      margin: 32px 0;
+      padding: 8px 0 8px 24px;
+      border-left: 3px solid var(--accent);
+      font-style: italic;
+      color: var(--text-primary);
+    }
+    .article-body blockquote p {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .article-body a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .article-body a:hover { color: var(--accent-hover); }
+
+    /* ========== CTA AGENDAR ========== */
+    .article-cta-wrap {
+      margin-top: 64px;
+    }
+    .article-cta {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+    .article-cta .eyebrow {
+      margin-bottom: 12px;
+    }
+    .article-cta h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .article-cta p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 12px auto 0;
+      max-width: 520px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 4px 12px rgba(8, 102, 255, 0.25);
+    }
+    .article-cta .btn { margin-top: 24px; }
+
+    /* ========== NEWSLETTER ========== */
+    .article-newsletter-wrap {
+      margin-top: 48px;
+    }
+    .article-newsletter {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+    .article-newsletter h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .article-newsletter p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      margin: 8px 0 0;
+    }
+    .article-newsletter form {
+      display: flex;
+      gap: 12px;
+      max-width: 560px;
+      margin: 24px auto 0;
+      align-items: center;
+    }
+    .article-newsletter input {
+      flex: 1;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      min-height: 44px;
+    }
+    .article-newsletter input::placeholder { color: var(--text-secondary); }
+    .article-newsletter button {
+      border: 0;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      min-height: 44px;
+      transition: all 0.2s ease;
+    }
+    .article-newsletter button:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 4px 12px rgba(8, 102, 255, 0.25);
+    }
+
+    /* ========== ARTÍCULOS RELACIONADOS ========== */
+    .related {
+      padding: var(--section-padding-desktop) 0;
+      margin-top: var(--section-padding-desktop);
+    }
+    .related-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 48px;
+    }
+    .related-head h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .related-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s ease;
+    }
+    .related-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+    .related-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      margin-bottom: 20px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .related-video .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .related-video .video-label {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.6875rem;
+      letter-spacing: 0.05em;
+      color: var(--text-secondary);
+    }
+    .related-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--text-primary);
+      margin: 0 0 8px;
+    }
+    .related-card .related-desc {
+      flex-grow: 1;
+      font-size: 0.9375rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      margin: 0 0 20px;
+    }
+    .related-link {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .related-link:hover { text-decoration: underline; }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border-light);
+      padding: 64px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+    .footer-col h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color 0.2s ease;
+    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-brand { margin-bottom: 12px; }
+    .footer-brand-desc {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      margin: 0 0 12px;
+      max-width: 320px;
+    }
+    .footer-brand-loc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .article-header { padding-top: var(--section-padding-mobile); }
+      .related {
+        padding: var(--section-padding-mobile) 0;
+        margin-top: var(--section-padding-mobile);
+      }
+      .article-newsletter form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .article-newsletter input,
+      .article-newsletter button { width: 100%; }
+
+      /* Nav: hamburger menu */
+      .nav-inner {
+        display: flex;
+        grid-template-columns: none;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 24px;
+      }
+      .brand { flex-shrink: 1; min-width: 0; }
+      .brand-name { font-size: 15px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        padding: 96px 24px 32px;
+        z-index: 90;
+        transform: translateY(-100%);
+        transition: transform 0.25s ease;
+        pointer-events: none;
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-links {
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .nav-menu {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      .nav-menu a {
+        font-size: 20px;
+        padding: 8px 16px;
+        display: inline-block;
+      }
+      .nav-cta {
+        margin-left: auto;
+        font-size: 14px;
+        padding: 10px 18px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle:checked ~ .nav-inner .nav-hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .article-cta { padding: 40px 24px; }
+      .article-newsletter { padding: 32px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .container,
+      .container-reading,
+      .container-body { padding: 0 20px; }
+      .nav-inner { padding: 14px 20px; gap: 10px; }
+      .brand-name { display: none; }
+
+      .related-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sección: Nav Sticky -->
+  <header class="nav">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+    <div class="nav-inner">
+      <a href="/wireframe.html#hero" class="brand">
+        <span class="brand-mark">JS</span>
+        <span class="brand-name">Jean Pierre Segil</span>
+      </a>
+      <nav class="nav-links">
+        <ul class="nav-menu">
+          <li><a href="/wireframe.html#problema">Problema</a></li>
+          <li><a href="/wireframe.html#servicios">Servicios</a></li>
+          <li><a href="/wireframe.html#metodologia">Metodología</a></li>
+          <li><a href="/wireframe.html#sobre-mi">Sobre mí</a></li>
+          <li><a href="/wireframe.html#casos">Casos</a></li>
+          <li><a href="/wireframe.html#contenido">Contenido</a></li>
+          <li><a href="/wireframe.html#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <a href="/agendar.html" class="nav-cta">Agendar</a>
+      <label for="nav-toggle" class="nav-hamburger" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  </header>
+
+  <!-- Sección: Header del artículo -->
+  <header class="article-header">
+    <div class="container-reading">
+      <span class="eyebrow">[ EYEBROW: Contenido educativo ]</span>
+      <h1 class="article-title">[ TÍTULO DEL ARTÍCULO — placeholder de 2 líneas máximo que resume la idea principal ]</h1>
+      <p class="article-meta">Por Jean Pierre Segil · [tiempo de lectura] · [fecha]</p>
+    </div>
+  </header>
+
+  <!-- Sección: Video embed -->
+  <section class="article-video-wrap">
+    <div class="container-reading">
+      <div class="article-video">
+        <div class="article-video-frame">
+          <span class="article-video-icon">▶</span>
+          <span class="article-video-label">[ VIDEO embed — TikTok ]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Cuerpo del artículo -->
+  <article class="article-body">
+    <div class="container-body">
+      <p>[ Párrafo 1 — introducción al tema. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ]</p>
+
+      <p>[ Párrafo 2 — contexto del problema. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ]</p>
+
+      <p>[ Párrafo 3 — desarrollo de la idea principal. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. ]</p>
+
+      <h2>[ Subtítulo H2 dentro del artículo ]</h2>
+
+      <p>[ Párrafo 4 — apertura del subtema. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. ]</p>
+
+      <p>[ Párrafo 5 — antes de la lista. Aquí se introduce una serie de puntos clave que el lector debe considerar. ]</p>
+
+      <ul>
+        <li>[ Punto 1 — idea concreta de una línea. ]</li>
+        <li>[ Punto 2 — idea concreta de una línea. ]</li>
+        <li>[ Punto 3 — idea concreta de una línea. ]</li>
+        <li>[ Punto 4 — idea concreta de una línea. ]</li>
+      </ul>
+
+      <blockquote>
+        <p>[ Cita destacada — frase potente que resume una idea del artículo en 1-2 líneas. ]</p>
+      </blockquote>
+
+      <p>[ Párrafo 6 — después del blockquote. Aquí se retoma el desarrollo. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ]</p>
+
+      <p>[ Párrafo 7 — desarrollo final. Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. ]</p>
+
+      <p>[ Párrafo 8 — cierre. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ]</p>
+    </div>
+  </article>
+
+  <!-- Sección: CTA Agendar -->
+  <section class="article-cta-wrap">
+    <div class="container-reading">
+      <div class="article-cta">
+        <span class="eyebrow">[ EYEBROW: ¿Te suena familiar? ]</span>
+        <h2>[ Título tipo: ¿Quieres revisar esto en tu negocio? ]</h2>
+        <p>[ Descripción de 2 líneas que invita al lector a agendar una reunión gratuita para revisar su caso. ]</p>
+        <a href="/agendar.html" class="btn btn-primary">Agendar reunión gratuita</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Newsletter -->
+  <section class="article-newsletter-wrap">
+    <div class="container-reading">
+      <div class="article-newsletter">
+        <h3>[ Recibe contenido como este cada semana ]</h3>
+        <p>[ Descripción breve de la newsletter ]</p>
+        <form onsubmit="return false;">
+          <input type="text" placeholder="Nombre" aria-label="Nombre">
+          <input type="email" placeholder="Correo electrónico" aria-label="Correo electrónico">
+          <button type="submit">Suscribirme</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Artículos relacionados -->
+  <section class="related">
+    <div class="container">
+      <div class="related-head">
+        <span class="eyebrow">Sigue leyendo</span>
+        <h2>Otros aprendizajes que podrían interesarte</h2>
+      </div>
+      <div class="related-grid">
+        <article class="related-card">
+          <div class="related-video">
+            <span class="play-icon">▶</span>
+            <span class="video-label">[ VIDEO embed — TikTok / YouTube ]</span>
+          </div>
+          <h3>[ Título del artículo relacionado 1 — máximo 2 líneas ]</h3>
+          <p class="related-desc">[ Descripción breve de 2 líneas sobre el contenido del artículo. ]</p>
+          <a href="#" class="related-link">Leer resumen →</a>
+        </article>
+        <article class="related-card">
+          <div class="related-video">
+            <span class="play-icon">▶</span>
+            <span class="video-label">[ VIDEO embed — TikTok / YouTube ]</span>
+          </div>
+          <h3>[ Título del artículo relacionado 2 — máximo 2 líneas ]</h3>
+          <p class="related-desc">[ Descripción breve de 2 líneas sobre el contenido del artículo. ]</p>
+          <a href="#" class="related-link">Leer resumen →</a>
+        </article>
+        <article class="related-card">
+          <div class="related-video">
+            <span class="play-icon">▶</span>
+            <span class="video-label">[ VIDEO embed — TikTok / YouTube ]</span>
+          </div>
+          <h3>[ Título del artículo relacionado 3 — máximo 2 líneas ]</h3>
+          <p class="related-desc">[ Descripción breve de 2 líneas sobre el contenido del artículo. ]</p>
+          <a href="#" class="related-link">Leer resumen →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="/wireframe.html" class="brand footer-brand">
+            <span class="brand-mark">JS</span>
+            <span class="brand-name">Jean Pierre Segil</span>
+          </a>
+          <p class="footer-brand-desc">Descripción breve de 2 líneas sobre la marca personal y su propuesta de valor.</p>
+          <p class="footer-brand-loc">Lima, Perú</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="/wireframe.html#hero">Inicio</a></li>
+            <li><a href="/wireframe.html#servicios">Servicios</a></li>
+            <li><a href="/wireframe.html#metodologia">Metodología</a></li>
+            <li><a href="/wireframe.html#sobre-mi">Sobre mí</a></li>
+            <li><a href="/wireframe.html#casos">Casos</a></li>
+            <li><a href="/wireframe.html#contenido">Contenido</a></li>
+            <li><a href="/wireframe.html#faq">FAQ</a></li>
+            <li><a href="/wireframe.html#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Sígueme</h4>
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">TikTok</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Términos</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Jean Pierre Segil. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        const toggle = document.getElementById('nav-toggle');
+        if (toggle) toggle.checked = false;
+      });
+    });
+  </script>
+
+</body>
+</html>
