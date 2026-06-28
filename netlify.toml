@@ -1,0 +1,12 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/wireframe.html"
+  to = "/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/wireframe"
+  to = "/index.html"
+  status = 301
