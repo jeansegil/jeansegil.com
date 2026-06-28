@@ -210,21 +210,32 @@
       border-radius: 16px;
       padding: 24px;
     }
-    .calendario-placeholder {
-      aspect-ratio: 16/10;
+    .calendario-card iframe {
+      display: block;
       width: 100%;
-      background: var(--bg-secondary);
-      border: 1px dashed var(--border-light);
+      height: 700px;
+      border: 0;
       border-radius: 12px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 32px;
     }
-    .calendario-placeholder span {
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--text-secondary);
+
+    /* Wrapper de íconos Lucide en tarjetas */
+    .card-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-bg-soft);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .card-icon-wrapper svg { display: block; }
+    .mientras-link .card-icon-wrapper {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0;
     }
 
     /* ========== QUE SIGUE ========== */
@@ -474,10 +485,7 @@
   <section id="calendario">
     <div class="container-medium">
       <div class="calendario-card">
-        <!-- AQUI VA EL EMBED DE GOOGLE CALENDAR -->
-        <div class="calendario-placeholder">
-          <span>[ IFRAME: Google Calendar Appointment Scheduling — altura 600px ]</span>
-        </div>
+        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3EHyFuKaqd2OMzBNpFhOY7JRgKhI5aIUTiNmKblNEwP48g5KRVryU0AHuMTyONiyjuhve_qQ-t?gv=true" frameborder="0" title="Agenda con Google Calendar"></iframe>
       </div>
     </div>
   </section>
@@ -491,17 +499,23 @@
       </div>
       <div class="pasos-grid">
         <article class="paso-card">
-          <div class="paso-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m16 19 2 2 4-4"/></svg>
+          </div>
           <h3>Confirmación inmediata</h3>
           <p>Recibirás un correo de confirmación con el link de Google Meet y todos los detalles de la reunión.</p>
         </article>
         <article class="paso-card">
-          <div class="paso-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="11.5" cy="14.5" r="2.5"/><path d="M13.27 16.27 15 18"/></svg>
+          </div>
           <h3>Preparación previa</h3>
           <p>Revisaré la información que compartiste para llegar a la reunión con contexto y aprovechar mejor los 45 minutos.</p>
         </article>
         <article class="paso-card">
-          <div class="paso-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
+          </div>
           <h3>Conversación honesta</h3>
           <p>Nos vemos en la fecha agendada. Hablamos de tu negocio y compartimos primeras observaciones sin filtros.</p>
         </article>
@@ -520,17 +534,23 @@
         </div>
         <div class="mientras-grid">
           <a href="/wireframe.html#newsletter" class="mientras-link">
-            <span class="mientras-link-icon">[ ÍCONO ]</span>
+            <span class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </span>
             <span class="mientras-link-text">Recibe ideas en tu correo cada semana</span>
             <span class="mientras-arrow">→</span>
           </a>
           <a href="/wireframe.html#casos" class="mientras-link">
-            <span class="mientras-link-icon">[ ÍCONO ]</span>
+            <span class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </span>
             <span class="mientras-link-text">Lee mis casos y aprendizajes</span>
             <span class="mientras-arrow">→</span>
           </a>
           <a href="https://www.linkedin.com/in/jeansegil/" class="mientras-link">
-            <span class="mientras-link-icon">[ ÍCONO ]</span>
+            <span class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </span>
             <span class="mientras-link-text">Sígueme en LinkedIn y TikTok</span>
             <span class="mientras-arrow">→</span>
           </a>

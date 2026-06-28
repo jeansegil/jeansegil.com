@@ -158,6 +158,21 @@
       background: var(--accent-bg-soft);
     }
 
+    /* Wrapper de íconos Lucide en tarjetas */
+    .card-icon-wrapper {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-bg-soft);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .card-icon-wrapper svg { display: block; }
+
     /* Placeholders genéricos (heredados, ahora más sobrios) */
     .placeholder {
       border: 1px dashed var(--border-light);
@@ -311,52 +326,16 @@
       flex-wrap: wrap;
     }
     .hero-visual {
-      aspect-ratio: 4/3;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-light);
-      border-radius: 16px;
-      position: relative;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 65%;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(8, 102, 255, 0.12) 0%, rgba(108, 92, 231, 0.12) 100%);
-      filter: blur(6px);
-    }
-    .hero-visual::after {
-      content: "";
-      position: absolute;
-      top: 30%;
-      left: 55%;
-      transform: translate(-50%, -50%) rotate(18deg);
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--accent) 0%, #6C5CE7 100%);
-      opacity: 0.85;
-    }
-    .hero-visual-label {
-      position: relative;
-      z-index: 1;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      color: var(--text-secondary);
-      background: rgba(255,255,255,0.92);
-      border: 1px solid var(--border-light);
-      border-radius: 999px;
-      padding: 6px 14px;
-      max-width: 80%;
-      text-align: center;
+    .hero-illustration {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
     /* ========== MARCAS ========== */
@@ -376,16 +355,31 @@
     }
     .marcas-row {
       display: grid;
-      grid-template-columns: repeat(8, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 16px;
     }
-    .marcas-row .placeholder-logo {
-      height: 56px;
-      background: var(--bg-secondary);
-      border: 1px dashed var(--border-light);
+    .logo-item {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
       border-radius: 8px;
-      color: var(--text-secondary);
-      opacity: 0.6;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 80px;
+      transition: all 0.2s ease;
+    }
+    .logo-item img {
+      max-width: 100%;
+      max-height: 48px;
+      object-fit: contain;
+      opacity: 0.7;
+      filter: grayscale(20%);
+      transition: all 0.2s ease;
+    }
+    .logo-item:hover img {
+      opacity: 1;
+      filter: grayscale(0%);
     }
 
     /* ========== PROBLEMA — bloque oscuro (isla) ========== */
@@ -434,9 +428,8 @@
     .problema-item:hover {
       border-color: var(--accent);
     }
-    .problema-item .placeholder-icon {
+    .problema-item .card-icon-wrapper {
       background: var(--accent-bg-soft);
-      border: 1px dashed var(--accent-bg-soft-strong);
       color: var(--accent);
       margin: 0 0 18px;
     }
@@ -616,8 +609,15 @@
     .sobre-img {
       aspect-ratio: 4/5;
       width: 100%;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      overflow: hidden;
+      display: block;
+    }
+    .sobre-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
       border-radius: 16px;
     }
     .sobre-text h2 {
@@ -686,11 +686,15 @@
     .exp-item:hover {
       border-color: var(--accent);
     }
-    .exp-item .placeholder-icon {
+    .exp-item .card-icon-wrapper {
       width: 40px;
       height: 40px;
-      min-height: 40px;
+      margin-bottom: 0;
     }
+    .problema-item .card-icon-wrapper {
+      margin-bottom: 18px;
+    }
+    .servicio-card .card-icon-wrapper { margin-bottom: 20px; }
     .exp-item p {
       margin: 0;
       font-size: 0.9375rem;
@@ -1114,6 +1118,12 @@
     }
 
     /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .marcas-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
     @media (max-width: 900px) {
       .hero { padding: var(--section-padding-mobile) 0; }
       .hero-grid {
@@ -1124,10 +1134,6 @@
 
       .nav-menu { gap: 20px; }
       .nav-menu a { font-size: 14px; }
-
-      .marcas-row {
-        grid-template-columns: repeat(4, 1fr);
-      }
 
       .problema-wrap {
         padding-top: var(--section-padding-mobile);
@@ -1284,8 +1290,8 @@
         scrollbar-width: none;
       }
       .marcas-row::-webkit-scrollbar { display: none; }
-      .marcas-row .placeholder-logo {
-        min-width: 140px;
+      .marcas-row .logo-item {
+        min-width: 160px;
         flex-shrink: 0;
       }
 
@@ -1401,8 +1407,28 @@
           </div>
           <p class="micro">45 minutos · Sin costo · Sin compromiso</p>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <span class="hero-visual-label">[ ILUSTRACIÓN: figura geométrica con gradiente azul-violeta ]</span>
+        <div class="hero-visual">
+          <svg class="hero-illustration" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración decorativa">
+            <defs>
+              <linearGradient id="grad-main" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0866FF"/>
+                <stop offset="100%" stop-color="#6C5CE7"/>
+              </linearGradient>
+              <linearGradient id="grad-light" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#A3C5FF"/>
+                <stop offset="100%" stop-color="#0866FF"/>
+              </linearGradient>
+              <radialGradient id="grad-circle-bg" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(8,102,255,0.18)"/>
+                <stop offset="100%" stop-color="rgba(8,102,255,0)"/>
+              </radialGradient>
+            </defs>
+            <circle cx="300" cy="300" r="260" fill="url(#grad-circle-bg)"/>
+            <rect x="180" y="200" width="240" height="240" rx="36" fill="url(#grad-main)" transform="rotate(-12 300 320)"/>
+            <rect x="220" y="240" width="160" height="160" rx="28" fill="rgba(255,255,255,0.18)" transform="rotate(-12 300 320)"/>
+            <circle cx="450" cy="180" r="36" fill="#A3C5FF" opacity="0.85"/>
+            <circle cx="150" cy="430" r="22" fill="url(#grad-light)" opacity="0.6"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -1411,16 +1437,20 @@
   <!-- Sección: Marcas -->
   <section id="marcas">
     <div class="container">
-      <p class="marcas-title">Marcas con las que he trabajado</p>
+      <p class="marcas-title">Marcas para las que he trabajado</p>
       <div class="marcas-row">
-        <div class="placeholder placeholder-logo">[ LOGO 1 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 2 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 3 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 4 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 5 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 6 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 7 ]</div>
-        <div class="placeholder placeholder-logo">[ LOGO 8 ]</div>
+        <div class="logo-item"><img src="assets/logos/karcher.png" alt="Kärcher" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/oechsle.png" alt="Oechsle" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/tugo.png" alt="TUGÓ" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/financieraoh.png" alt="Financiera Oh!" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/ecoplaza.png" alt="Ecoplaza" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/sip.png" alt="SIP" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/tinajas.webp" alt="Tinajas" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/lena-y-carbon.png" alt="Leña y Carbón" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/moncler.png" alt="Moncler" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/caricia.png" alt="Caricia" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/tortas-de-la-casa.png" alt="Tortas de la Casa" loading="lazy"></div>
+        <div class="logo-item"><img src="assets/logos/refugio.jpeg" alt="El Refugio" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -1436,32 +1466,44 @@
         </div>
         <div class="problema-grid">
           <article class="problema-item">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+            </div>
             <h3>Inversión sin retorno claro</h3>
             <p>¿Por qué no estoy vendiendo más si estoy invirtiendo más cada mes en marketing?</p>
           </article>
           <article class="problema-item">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            </div>
             <h3>Embudo desconocido</h3>
             <p>¿Qué parte del embudo está fallando realmente — el anuncio, el mensaje, el seguimiento?</p>
           </article>
           <article class="problema-item">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" x2="12" y1="2" y2="12"/></svg>
+            </div>
             <h3>Dependencia de plataforma</h3>
             <p>¿Por qué mi negocio depende tanto de una sola plataforma como Meta o Google Ads?</p>
           </article>
           <article class="problema-item">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></svg>
+            </div>
             <h3>Leads que no cierran</h3>
             <p>Los leads llegan pero no terminan en clientes. ¿Es la campaña, el equipo comercial o el mensaje?</p>
           </article>
           <article class="problema-item">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3"/><path d="m15 9 6-6"/></svg>
+            </div>
             <h3>Tráfico vs. clientes</h3>
             <p>¿Estoy pagando por tráfico que no convierte o por clientes reales que mueven el negocio?</p>
           </article>
           <article class="problema-item">
-            <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+            <div class="card-icon-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+            </div>
             <h3>Optimización dudosa</h3>
             <p>¿Mi agencia o freelancer realmente está optimizando, o solo está manteniendo las campañas activas?</p>
           </article>
@@ -1495,35 +1537,45 @@
       </div>
       <div class="servicios-grid">
         <article class="servicio-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
           <h3>Consultoría de Growth Marketing</h3>
           <p class="servicio-desc">Acompañamiento continuo para entender qué está frenando tu crecimiento digital y qué acciones priorizar. Trabajamos sobre estrategia, decisiones de inversión y mejora del embudo.</p>
           <hr class="servicio-divider">
           <p class="servicio-ideal">Ideal si: ya tienes un equipo o agencia ejecutando, pero necesitas una mirada externa y estratégica.</p>
         </article>
         <article class="servicio-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+          </div>
           <h3>Auditoría de Marketing Digital</h3>
           <p class="servicio-desc">Revisión detallada de campañas, canales, anuncios, embudo, medición y procesos de seguimiento. Entrego un informe con hallazgos y un plan de acción priorizado.</p>
           <hr class="servicio-divider">
           <p class="servicio-ideal">Ideal si: sientes que inviertes mucho y no tienes claridad sobre qué está funcionando.</p>
         </article>
         <article class="servicio-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
           <h3>Estrategia de Paid Media</h3>
           <p class="servicio-desc">Definición de objetivos, estructura de campañas, distribución de presupuesto, mensajes, segmentación y testeo para Google Ads, Meta Ads, TikTok Ads y LinkedIn Ads.</p>
           <hr class="servicio-divider">
           <p class="servicio-ideal">Ideal si: vas a lanzar una nueva campaña o necesitas replantear tu estrategia de medios.</p>
         </article>
         <article class="servicio-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+          </div>
           <h3>Automatización y Reporting</h3>
           <p class="servicio-desc">Implementación de dashboards en Looker Studio, automatización de reportes, flujos de trabajo con Make y n8n, y mejora de procesos de seguimiento comercial.</p>
           <hr class="servicio-divider">
           <p class="servicio-ideal">Ideal si: pierdes horas armando reportes o tu información vive dispersa en múltiples plataformas.</p>
         </article>
         <article class="servicio-card">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          </div>
           <h3>Ejecución de Campañas</h3>
           <p class="servicio-desc">Gestión operativa de campañas digitales en casos puntuales donde se requiere apoyo en la implementación directa. Disponible según alcance.</p>
           <hr class="servicio-divider">
@@ -1590,9 +1642,10 @@
         <p class="subtitle">Un consultor que cree en el método más que en las fórmulas mágicas.</p>
       </div>
       <div class="sobre-grid">
-        <div class="placeholder placeholder-img sobre-img">
-          [ IMAGEN: foto profesional Jean Pierre ]
-        </div>
+        <picture class="sobre-img">
+          <source media="(max-width: 768px)" srcset="assets/foto-perfil-mobile.jpg">
+          <img src="assets/foto-perfil.jpg" alt="Jean Pierre Segil, consultor de Growth Marketing" loading="lazy">
+        </picture>
         <div class="sobre-text">
           <h2>Hola, soy Jean Pierre.</h2>
           <p>Llevo varios años trabajando en growth marketing y paid media para empresas de distintos rubros: consumo masivo, retail, e-commerce, inmobiliario, salud, gastronomía, B2B y fintech. He gestionado cuentas como Kärcher, TUGÓ, Tinajas, Leña y Carbón, Moncler, Caricia y El Refugio, entre otras.</p>
@@ -1628,39 +1681,57 @@
       </div>
       <div class="exp-grid">
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
           <p>Consumo masivo</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg>
+          </div>
           <p>Retail</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          </div>
           <p>E-commerce</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+          </div>
           <p>Inmobiliario</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
+          </div>
           <p>Salud y clínicas</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+          </div>
           <p>Restaurantes y gastronomía</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
           <p>B2B</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>
+          </div>
           <p>Fintech y servicios financieros</p>
         </div>
         <div class="exp-item">
-          <div class="placeholder placeholder-icon">[ ÍCONO ]</div>
+          <div class="card-icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+          </div>
           <p>Empresas de servicios</p>
         </div>
       </div>
