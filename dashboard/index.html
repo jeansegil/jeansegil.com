@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Dashboard — Métricas con insights de IA</title>
+  <meta name="description" content="Dashboard de métricas de marketing y crecimiento con análisis e insights generados por inteligencia artificial.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230866FF'/><text x='16' y='22' font-family='Inter,system-ui,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'>AI</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">AI</div>
+      <div class="brand-text">
+        <strong>Dashboard</strong>
+        <span>Métricas + IA</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#" class="nav-item active">
+        <span class="nav-icon">▦</span> Resumen
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">↗</span> Adquisición
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">◐</span> Conversión
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">◈</span> Audiencia
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-icon">⚙</span> Configuración
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="user-avatar">JS</div>
+        <div class="user-info">
+          <strong>Jean Segil</strong>
+          <span>Plan Pro</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div>
+        <h1>Resumen general</h1>
+        <p class="topbar-subtitle">Últimos 30 días · Actualizado hace 4 min</p>
+      </div>
+
+      <div class="topbar-actions">
+        <select class="select" id="rangeSelect">
+          <option value="7">Últimos 7 días</option>
+          <option value="30" selected>Últimos 30 días</option>
+          <option value="90">Últimos 90 días</option>
+        </select>
+        <button class="btn btn-primary" id="refreshBtn">
+          <span>↻</span> Actualizar
+        </button>
+      </div>
+    </header>
+
+    <!-- KPI Cards -->
+    <section class="kpi-grid">
+      <article class="kpi-card">
+        <div class="kpi-label">Visitantes únicos</div>
+        <div class="kpi-value" id="kpi-visitors">—</div>
+        <div class="kpi-delta positive">▲ 12.4% vs período previo</div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-label">Tasa de conversión</div>
+        <div class="kpi-value" id="kpi-conversion">—</div>
+        <div class="kpi-delta positive">▲ 0.8 pp</div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-label">CAC promedio</div>
+        <div class="kpi-value" id="kpi-cac">—</div>
+        <div class="kpi-delta negative">▼ 6.2%</div>
+      </article>
+
+      <article class="kpi-card">
+        <div class="kpi-label">Ingresos atribuidos</div>
+        <div class="kpi-value" id="kpi-revenue">—</div>
+        <div class="kpi-delta positive">▲ 18.7%</div>
+      </article>
+    </section>
+
+    <!-- AI Insights -->
+    <section class="ai-insights">
+      <div class="ai-insights-header">
+        <div class="ai-badge">
+          <span class="ai-dot"></span> Insights generados por IA
+        </div>
+        <button class="btn-ghost" id="regenerateBtn">Regenerar análisis</button>
+      </div>
+
+      <div class="ai-content" id="aiContent">
+        <div class="ai-loading">Generando análisis con IA…</div>
+      </div>
+    </section>
+
+    <!-- Charts row -->
+    <section class="charts-grid">
+      <article class="chart-card chart-card-wide">
+        <header class="chart-header">
+          <h2>Tráfico por canal</h2>
+          <span class="chart-meta">Sesiones · diario</span>
+        </header>
+        <div class="chart-wrap">
+          <canvas id="trafficChart"></canvas>
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <header class="chart-header">
+          <h2>Mix de canales</h2>
+          <span class="chart-meta">% del total</span>
+        </header>
+        <div class="chart-wrap">
+          <canvas id="channelMixChart"></canvas>
+        </div>
+      </article>
+    </section>
+
+    <section class="charts-grid">
+      <article class="chart-card">
+        <header class="chart-header">
+          <h2>Embudo de conversión</h2>
+          <span class="chart-meta">Últimos 30 días</span>
+        </header>
+        <div class="chart-wrap">
+          <canvas id="funnelChart"></canvas>
+        </div>
+      </article>
+
+      <article class="chart-card chart-card-wide">
+        <header class="chart-header">
+          <h2>Ingresos vs gasto en ads</h2>
+          <span class="chart-meta">USD · diario</span>
+        </header>
+        <div class="chart-wrap">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </article>
+    </section>
+
+    <footer class="page-footer">
+      <span>AI Dashboard · Skeleton inicial</span>
+      <span>Datos demo · conectar API real en <code>script.js</code></span>
+    </footer>
+  </main>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
